@@ -10,9 +10,6 @@ const NPX_MAJOR_VERSION = '6';
 export class VueCliBundling implements cdk.BundlingOptions {
 
   public static bundling(options: VueCliBuildProps): s3Deploy.ISource {
-    console.log({
-      bundling: new VueCliBundling(options),
-    });
     return s3Deploy.Source.asset(
       options.source,
       {
@@ -40,7 +37,6 @@ export class VueCliBundling implements cdk.BundlingOptions {
     this.image = cdk.BundlingDockerImage.fromRegistry('node:lts');
     this.command = ['bash', '-c', bundlingCommand];
     this.environment = props.environment;
-    console.log('Build props env', props.environment);
     if (!props.forceDockerBundling) {
       const osPlatform = os.platform();
       const createLocalCommand = (outputDir: string) => {
