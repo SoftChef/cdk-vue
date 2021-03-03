@@ -66,7 +66,7 @@
     "@aws-cdk/cx-api" "1.91.0"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-cloudfront-origins@^1.91.0":
+"@aws-cdk/aws-cloudfront-origins@^1.73.0":
   version "1.91.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudfront-origins/-/aws-cloudfront-origins-1.91.0.tgz#ef2814da0966d92ad0ee12f809a68a6cf1dfc9c6"
   integrity sha512-vayZT70N71dneXrYemVE39HJqXJHR5NGYO0SrrhhapOFuG/GA1+EUdhXVPg+DrNtSSx3Z6Hog1cQlqLFkqOg+A==
@@ -78,7 +78,7 @@
     "@aws-cdk/core" "1.91.0"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-cloudfront@1.91.0", "@aws-cdk/aws-cloudfront@^1.91.0":
+"@aws-cdk/aws-cloudfront@1.91.0", "@aws-cdk/aws-cloudfront@^1.73.0":
   version "1.91.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudfront/-/aws-cloudfront-1.91.0.tgz#d1bb024d4e88f8ff0d1d0395ea9e892cc77bbfd0"
   integrity sha512-Ho/ijKeu8QXJ6ZH3/vJDgFuFJ+T8ugu86AELNNn+M+38pI50g1kkvgmkB2iQ00zbqgvvy0BzsPRz0lLQN0FSIQ==
@@ -272,7 +272,7 @@
     "@aws-cdk/cx-api" "1.91.0"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-s3-deployment@^1.91.0":
+"@aws-cdk/aws-s3-deployment@^1.73.0":
   version "1.91.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-s3-deployment/-/aws-s3-deployment-1.91.0.tgz#616460273d27a0c2a79760d3d1a4eb2d43786c7b"
   integrity sha512-qx7J1FVnL+WrYw6T5n3hEjDMvhdC2Ixk9fgBBsmV1jGkULnCUCvup0SDEMflmJpyccGl8XRSoqYn9xH7e6Fv5A==
@@ -287,7 +287,7 @@
     "@aws-cdk/lambda-layer-awscli" "1.91.0"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-s3@1.91.0", "@aws-cdk/aws-s3@^1.91.0":
+"@aws-cdk/aws-s3@1.91.0", "@aws-cdk/aws-s3@^1.73.0":
   version "1.91.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-s3/-/aws-s3-1.91.0.tgz#ab1ed2308f4eec7151397d62f0f1278ef225ccc9"
   integrity sha512-P2871i/1ofyrU7+Scicv4lQs4kXGnuft6eFUJJJesFvE6Nr/Oy3KRSnqWm0ju0TM+IlgYUMQJApR/pAxNiTHxQ==
@@ -361,7 +361,7 @@
     string-width "^4.2.0"
     table "^6.0.7"
 
-"@aws-cdk/core@1.91.0", "@aws-cdk/core@^1.91.0":
+"@aws-cdk/core@1.91.0", "@aws-cdk/core@^1.73.0":
   version "1.91.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/core/-/core-1.91.0.tgz#239758e3b60d1cced3f9b195e2ba40117890d5e5"
   integrity sha512-fdHsIgpKcWpWpYpmeDTldRcc2IKbjf4J9433kYxBZ/x4cSck8Wl0yP96XU5rHihQio+u51J1d9QIKyoRHZADVA==

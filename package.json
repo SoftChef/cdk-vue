@@ -28,13 +28,6 @@
     "email": "minche@softchef.com",
     "organization": false
   },
-  "dependencies": {
-    "@aws-cdk/aws-cloudfront": "^1.91.0",
-    "@aws-cdk/aws-cloudfront-origins": "^1.91.0",
-    "@aws-cdk/aws-s3": "^1.91.0",
-    "@aws-cdk/aws-s3-deployment": "^1.91.0",
-    "@aws-cdk/core": "^1.91.0"
-  },
   "devDependencies": {
     "@aws-cdk/assert": "^1.73.0",
     "@types/jest": "^26.0.20",
@@ -58,7 +51,19 @@
     "typescript": "^4.2.2"
   },
   "peerDependencies": {
+    "@aws-cdk/aws-cloudfront": "^1.73.0",
+    "@aws-cdk/aws-cloudfront-origins": "^1.73.0",
+    "@aws-cdk/aws-s3": "^1.73.0",
+    "@aws-cdk/aws-s3-deployment": "^1.73.0",
+    "@aws-cdk/core": "^1.73.0",
     "constructs": "^3.2.27"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-cloudfront": "^1.73.0",
+    "@aws-cdk/aws-cloudfront-origins": "^1.73.0",
+    "@aws-cdk/aws-s3": "^1.73.0",
+    "@aws-cdk/aws-s3-deployment": "^1.73.0",
+    "@aws-cdk/core": "^1.73.0"
   },
   "bundledDependencies": [],
   "keywords": [
@@ -66,7 +71,7 @@
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",
