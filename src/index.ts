@@ -1,37 +1,37 @@
-import * as cloudfront from '@aws-cdk/aws-cloudfront'
-import * as cloudfrontOrigins from '@aws-cdk/aws-cloudfront-origins'
-import * as s3 from '@aws-cdk/aws-s3'
-import * as s3Deploy from '@aws-cdk/aws-s3-deployment'
-import * as cdk from '@aws-cdk/core'
-import { VueCliBundling } from './build'
+import * as cloudfront from '@aws-cdk/aws-cloudfront';
+import * as cloudfrontOrigins from '@aws-cdk/aws-cloudfront-origins';
+import * as s3 from '@aws-cdk/aws-s3';
+import * as s3Deploy from '@aws-cdk/aws-s3-deployment';
+import * as cdk from '@aws-cdk/core';
+import { VueCliBundling } from './build';
 
 export interface VueDeploymentProps {
 
   // VueJS source directory
-  readonly source: string
+  readonly source: string;
 
-  readonly bucket?: s3.Bucket
+  readonly bucket?: s3.Bucket;
 
   // Specify S3 bucket
-  readonly bucketName?: string
+  readonly bucketName?: string;
 
   // S3 bucket prefix
-  readonly websiteDirectoryPrefix?: string
+  readonly websiteDirectoryPrefix?: string;
 
   // CloudFront distribution defaultRootObject
-  readonly indexHtml?: string
+  readonly indexHtml?: string;
 
-  readonly environment?: { [ key: string ]: string }
+  readonly environment?: { [ key: string ]: string };
 
-  readonly bundlingArguments?: string
+  readonly bundlingArguments?: string;
 
   // Runs vue-cli locally
-  readonly runsLocally?: boolean
+  readonly runsLocally?: boolean;
 
   // Force use docker to bundling
-  readonly forceDockerBundling?: boolean
+  readonly forceDockerBundling?: boolean;
 
-  readonly enableIpv6?: boolean
+  readonly enableIpv6?: boolean;
 
 }
 
@@ -43,62 +43,62 @@ export class VueDeployment extends cdk.Construct {
   public readonly bucketDeployment: s3Deploy.BucketDeployment
 
   constructor(scope: cdk.Construct, id: string, props: VueDeploymentProps) {
-    super(scope, id)
-    const indexHtml = props.indexHtml ?? 'index.html'
-    const websiteDirectoryPrefix = props.websiteDirectoryPrefix?.replace(/^\//, '') ?? ''
+    super(scope, id);
+    const indexHtml = props.indexHtml ?? 'index.html';
+    const websiteDirectoryPrefix = props.websiteDirectoryPrefix?.replace(/^\//, '') ?? '';
     const s3SourceAsset = VueCliBundling.bundling({
       source: props.source,
       runsLocally: props.runsLocally ?? true,
       forceDockerBundling: props.forceDockerBundling ?? false,
       bundlingArguments: props.bundlingArguments,
-      environment: props.environment
-    })
+      environment: props.environment,
+    });
     if (props.bucket) {
-      this.s3Bucket = props.bucket
+      this.s3Bucket = props.bucket;
     } else {
       this.s3Bucket = new s3.Bucket(this, cdk.Names.nodeUniqueId(scope.node), {
-        bucketName: props.bucketName
-      })
+        bucketName: props.bucketName,
+      });
       this.s3Bucket.addCorsRule({
         allowedMethods: [
           s3.HttpMethods.GET,
           s3.HttpMethods.POST,
           s3.HttpMethods.PUT,
           s3.HttpMethods.HEAD,
-          s3.HttpMethods.DELETE
+          s3.HttpMethods.DELETE,
         ],
         allowedOrigins: ['*'],
-        allowedHeaders: ['*']
-      })
+        allowedHeaders: ['*'],
+      });
     }
     this.bucketDeployment = new s3Deploy.BucketDeployment(this, 'DeployWebsite', {
       sources: [
-        s3SourceAsset
+        s3SourceAsset,
       ],
       destinationBucket: this.s3Bucket,
-      destinationKeyPrefix: websiteDirectoryPrefix
-    })
+      destinationKeyPrefix: websiteDirectoryPrefix,
+    });
     this.cloudfrontDistribution = new cloudfront.Distribution(this, 'WebsiteDistribution', {
       defaultRootObject: indexHtml,
       defaultBehavior: {
         origin: new cloudfrontOrigins.S3Origin(this.s3Bucket, {
-          originPath: `/${websiteDirectoryPrefix ?? ''}`
+          originPath: `/${websiteDirectoryPrefix ?? ''}`,
         }),
-        viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS
+        viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
       enableIpv6: props.enableIpv6,
       errorResponses: [
         {
           httpStatus: 403,
           responseHttpStatus: 200,
-          responsePagePath: `/${indexHtml}`
+          responsePagePath: `/${indexHtml}`,
         },
         {
           httpStatus: 404,
           responseHttpStatus: 200,
-          responsePagePath: `/${indexHtml}`
-        }
-      ]
-    })
+          responsePagePath: `/${indexHtml}`,
+        },
+      ],
+    });
   }
 }

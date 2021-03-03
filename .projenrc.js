@@ -1,4 +1,4 @@
-const { AwsCdkConstructLibrary } = require('projen')
+const { AwsCdkConstructLibrary } = require('projen');
 
 const project = new AwsCdkConstructLibrary({
   author: 'MinCheTsai',
@@ -13,8 +13,8 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-cloudfront-origins': '^1.91.0',
     '@aws-cdk/aws-s3': '^1.91.0',
     '@aws-cdk/aws-s3-deployment': '^1.91.0',
-    '@aws-cdk/core': '^1.91.0'
-  }
+    '@aws-cdk/core': '^1.91.0',
+  },
   /* AwsCdkConstructLibraryOptions */
   // cdkAssert: true,                                                          /* Install the @aws-cdk/assert library? */
   // cdkDependencies: undefined,                                               /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
@@ -118,6 +118,6 @@ const project = new AwsCdkConstructLibrary({
   // parent: undefined,                                                        /* The parent project, if this project is part of a bigger project. */
   // projectType: ProjectType.UNKNOWN,                                         /* Which type of project this is (library/app). */
   // readme: undefined,                                                        /* The README setup. */
-})
+});
 
-project.synth()
+project.synth();
