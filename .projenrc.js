@@ -13,7 +13,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-cloudfront-origins',
     '@aws-cdk/aws-s3',
     '@aws-cdk/aws-s3-deployment',
-    '@aws-cdk/core'
+    '@aws-cdk/core',
   ],
   /* AwsCdkConstructLibraryOptions */
   // cdkAssert: true,                                                          /* Install the @aws-cdk/assert library? */
