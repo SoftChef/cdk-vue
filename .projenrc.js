@@ -3,8 +3,10 @@ const { AwsCdkConstructLibrary } = require('projen');
 const project = new AwsCdkConstructLibrary({
   author: 'MinCheTsai',
   authorAddress: 'minche@softchef.com',
-  cdkVersion: '1.73.0',
+  cdkVersion: '1.91.0',
+  releaseBranches: ['main'],
   defaultReleaseBranch: 'main',
+  dependabot: false,
   jsiiFqn: 'projen.AwsCdkConstructLibrary',
   name: 'sccdk-vue',
   repositoryUrl: 'https://github.com/minche/sccdk-vue.git',
@@ -14,6 +16,10 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-s3',
     '@aws-cdk/aws-s3-deployment',
     '@aws-cdk/core',
+  ],
+  keywords: [
+    'cdk',
+    'vue',
   ],
   /* AwsCdkConstructLibraryOptions */
   // cdkAssert: true,                                                          /* Install the @aws-cdk/assert library? */
