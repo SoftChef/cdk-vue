@@ -7,8 +7,14 @@ const project = new AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   jsiiFqn: 'projen.AwsCdkConstructLibrary',
   name: 'sccdk-vue',
-  repositoryUrl: 'https://github.com/minche/sccdk-vue.git'
-
+  repositoryUrl: 'https://github.com/minche/sccdk-vue.git',
+  dependencies: [
+    '@aws-cdk/aws-cloudfront',
+    '@aws-cdk/aws-cloudfront-origins',
+    '@aws-cdk/aws-s3',
+    '@aws-cdk/aws-s3-deployment',
+    '@aws-cdk/core',
+  ],
   /* AwsCdkConstructLibraryOptions */
   // cdkAssert: true,                                                          /* Install the @aws-cdk/assert library? */
   // cdkDependencies: undefined,                                               /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
