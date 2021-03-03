@@ -1,4 +1,4 @@
-const { AwsCdkConstructLibrary } = require('projen')
+const { AwsCdkConstructLibrary } = require('projen');
 
 const project = new AwsCdkConstructLibrary({
   author: 'MinCheTsai',
@@ -118,6 +118,6 @@ const project = new AwsCdkConstructLibrary({
   // parent: undefined,                                                        /* The parent project, if this project is part of a bigger project. */
   // projectType: ProjectType.UNKNOWN,                                         /* Which type of project this is (library/app). */
   // readme: undefined,                                                        /* The README setup. */
-})
+});
 
-project.synth()
+project.synth();
