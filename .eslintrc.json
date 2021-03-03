@@ -59,7 +59,7 @@
     ],
     "comma-dangle": [
       "error",
-      "always-multiline"
+      "never"
     ],
     "comma-spacing": [
       "error",
@@ -118,7 +118,17 @@
       "consistent"
     ],
     "@typescript-eslint/member-delimiter-style": [
-      "error"
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        }
+      }
     ],
     "import/no-extraneous-dependencies": [
       "error",
@@ -161,7 +171,7 @@
     ],
     "semi": [
       "error",
-      "always"
+      "never"
     ],
     "quote-props": [
       "error",
@@ -204,13 +214,13 @@
       {
         "default": [
           "public-static-field",
-          "public-static-method",
           "protected-static-field",
-          "protected-static-method",
           "private-static-field",
-          "private-static-method",
           "field",
           "constructor",
+          "public-static-method",
+          "protected-static-method",
+          "private-static-method",
           "method"
         ]
       }
