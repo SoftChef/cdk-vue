@@ -22,10 +22,10 @@ export interface VueDeploymentProps {
   // S3 bucket prefix
   readonly websiteDirectoryPrefix?: string;
 
-  readonly configJsKey?: string;
-
   // CloudFront distribution defaultRootObject
   readonly indexHtml?: string;
+
+  readonly enableIpv6?: boolean;
 
   readonly environment?: { [ key: string ]: string };
 
@@ -37,9 +37,11 @@ export interface VueDeploymentProps {
   // Force use docker to bundling
   readonly forceDockerBundling?: boolean;
 
-  readonly config: { [key: string]: string };
+  // Config.js in the web bucket key
+  readonly configJsKey?: string;
 
-  readonly enableIpv6?: boolean;
+  // Config will upload to web bucket
+  readonly config: { [key: string]: any };
 
 }
 
