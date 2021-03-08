@@ -69,7 +69,7 @@
     },
     {
       "name": "projen",
-      "version": "^0.16.36",
+      "version": "^0.16.38",
       "type": "build"
     },
     {
@@ -92,6 +92,16 @@
     },
     {
       "name": "@aws-cdk/aws-cloudfront",
+      "version": "^1.92.0",
+      "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-iam",
+      "version": "^1.92.0",
+      "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-lambda-nodejs",
       "version": "^1.92.0",
       "type": "peer"
     },
@@ -122,6 +132,16 @@
     },
     {
       "name": "@aws-cdk/aws-cloudfront",
+      "version": "^1.92.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-iam",
+      "version": "^1.92.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-lambda-nodejs",
       "version": "^1.92.0",
       "type": "runtime"
     },

@@ -34,10 +34,12 @@ new VueDeployment(scope: Construct, id: string, props: VueDeploymentProps)
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[VueDeploymentProps](#sccdk-vue-vuedeploymentprops)</code>)  *No description*
+  * **config** (<code>Map<string, string></code>)  *No description* 
   * **source** (<code>string</code>)  *No description* 
   * **bucket** (<code>[Bucket](#aws-cdk-aws-s3-bucket)</code>)  *No description* __*Optional*__
   * **bucketName** (<code>string</code>)  *No description* __*Optional*__
   * **bundlingArguments** (<code>string</code>)  *No description* __*Optional*__
+  * **configJsKey** (<code>string</code>)  *No description* __*Optional*__
   * **enableIpv6** (<code>boolean</code>)  *No description* __*Optional*__
   * **environment** (<code>Map<string, string></code>)  *No description* __*Optional*__
   * **forceDockerBundling** (<code>boolean</code>)  *No description* __*Optional*__
@@ -52,9 +54,10 @@ new VueDeployment(scope: Construct, id: string, props: VueDeploymentProps)
 
 Name | Type | Description 
 -----|------|-------------
+**bucket** | <code>[Bucket](#aws-cdk-aws-s3-bucket)</code> | <span></span>
 **bucketDeployment** | <code>[BucketDeployment](#aws-cdk-aws-s3-deployment-bucketdeployment)</code> | <span></span>
 **cloudfrontDistribution** | <code>[Distribution](#aws-cdk-aws-cloudfront-distribution)</code> | <span></span>
-**s3Bucket** | <code>[Bucket](#aws-cdk-aws-s3-bucket)</code> | <span></span>
+**uploadConfig** | <code>[CustomResource](#aws-cdk-core-customresource)</code> | <span></span>
 
 
 
@@ -67,10 +70,12 @@ Name | Type | Description
 
 Name | Type | Description 
 -----|------|-------------
+**config** | <code>Map<string, string></code> | <span></span>
 **source** | <code>string</code> | <span></span>
 **bucket**? | <code>[Bucket](#aws-cdk-aws-s3-bucket)</code> | __*Optional*__
 **bucketName**? | <code>string</code> | __*Optional*__
 **bundlingArguments**? | <code>string</code> | __*Optional*__
+**configJsKey**? | <code>string</code> | __*Optional*__
 **enableIpv6**? | <code>boolean</code> | __*Optional*__
 **environment**? | <code>Map<string, string></code> | __*Optional*__
 **forceDockerBundling**? | <code>boolean</code> | __*Optional*__

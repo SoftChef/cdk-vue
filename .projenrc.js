@@ -13,6 +13,8 @@ const project = new AwsCdkConstructLibrary({
   cdkDependencies: [
     '@aws-cdk/aws-cloudfront',
     '@aws-cdk/aws-cloudfront-origins',
+    '@aws-cdk/aws-iam',
+    '@aws-cdk/aws-lambda-nodejs',
     '@aws-cdk/aws-s3',
     '@aws-cdk/aws-s3-deployment',
     '@aws-cdk/core',
