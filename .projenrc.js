@@ -9,7 +9,7 @@ const project = new AwsCdkConstructLibrary({
   dependabot: true,
   jsiiFqn: 'projen.AwsCdkConstructLibrary',
   name: 'sccdk-vue',
-  repositoryUrl: 'https://github.com/minche/sccdk-vue.git',
+  repositoryUrl: 'https://github.com/softchef/sccdk-vue.git',
   cdkDependencies: [
     '@aws-cdk/aws-cloudfront',
     '@aws-cdk/aws-cloudfront-origins',
