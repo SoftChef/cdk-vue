@@ -121,6 +121,7 @@ export class VueDeployment extends cdk.Construct {
         effect: iam.Effect.ALLOW,
         actions: [
           's3:PutObject',
+          's3:DeleteObject',
         ],
         resources: [
           `${this.bucket.bucketArn}/*`,
