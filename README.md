@@ -1,10 +1,11 @@
-# SoftChef CDK with VueJs
+# AWS CDK with VueJs
 
-SoftChef CDK Vue package is auto deploy website with VueJs to S3 bucket and CloudFront distribution.
+AWS CDK with VueJs package will auto deploy website with VueJs to S3 bucket and CloudFront distribution.
 
 VueJs will build on local environment or docker container, it's based with Vue-CLI project. Then use S3-Deployment to upload to specify S3 bucket.
 
 If you have many resource arguments will pass to frontend, the config property will generate config.js to specify S3 bucket. It's a VueJs extendsion and archive config in Vue.$config operation.
+
 ## Installation
 
 ```
@@ -32,7 +33,7 @@ const website = new VueDeployment(this, 'Website', {
 })
 ```
 
-## Properties
+## VueDeployment Properties
 
 ```
 {
