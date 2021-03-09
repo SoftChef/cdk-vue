@@ -14,6 +14,7 @@ export interface VueDeploymentProps {
   // VueJS source directory
   readonly source: string;
 
+  // Use target bucket or create new bucket
   readonly bucket?: s3.Bucket;
 
   // Specify S3 bucket
@@ -41,7 +42,7 @@ export interface VueDeploymentProps {
   readonly configJsKey?: string;
 
   // Config will upload to web bucket
-  readonly config: { [key: string]: any };
+  readonly config?: { [key: string]: any };
 
 }
 
@@ -146,16 +147,18 @@ export class VueDeployment extends cdk.Construct {
       },
       role: updateConfigFunctionRole,
     });
-    return new cdk.CustomResource(this, 'UploadConfig', {
+    const uploadConfig = new cdk.CustomResource(this, 'UploadConfig', {
       serviceToken: uploadConfigFunction.functionArn,
       pascalCaseProperties: false,
       properties: {
         bucketName: this.bucket.bucketName,
         configJsKey: props.configJsKey ?? 'config.js',
-        ...props.config,
+        ...(props.config ?? {}),
       },
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
+    uploadConfig.node.addDependency(this.bucketDeployment);
+    return uploadConfig;
   }
 
   /** @internal */

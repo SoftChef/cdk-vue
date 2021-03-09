@@ -14,6 +14,10 @@ import { VueDeployment } from 'sccdk-vue'
 // In your stack
 // Basic deployment
 const website = new VueDeployment(this, 'Website', {
-  source: `${CLIENTS_PATH}`
+  source: `${CLIENTS_PATH}`,
+  config: {
+    apiId: articleApi.restApiId, // RestApi
+    userPoolId: userPool.userPoolId
+  }
 })
 ```
