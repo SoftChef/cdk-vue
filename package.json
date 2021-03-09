@@ -2,7 +2,7 @@
   "name": "sccdk-vue",
   "repository": {
     "type": "git",
-    "url": "https://github.com/minche/sccdk-vue.git"
+    "url": "https://github.com/softchef/sccdk-vue.git"
   },
   "scripts": {
     "projen": "npx projen",
