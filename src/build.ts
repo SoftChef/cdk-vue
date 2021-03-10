@@ -34,7 +34,7 @@ export class VueCliBundling implements cdk.BundlingOptions {
     VueCliBundling.runsLocally = (getNpxVersion()?.startsWith(NPX_MAJOR_VERSION) && getVueCliVersion()?.startsWith('@vue/cli')) ?? false;
     const bundlingArguments = props.bundlingArguments ?? '';
     const bundlingCommand = this.createBundlingCommand(cdk.AssetStaging.BUNDLING_OUTPUT_DIR, bundlingArguments);
-    this.image = cdk.BundlingDockerImage.fromRegistry('node:lts');
+    this.image = cdk.DockerImage.fromRegistry('node:lts');
     this.command = ['bash', '-c', bundlingCommand];
     this.environment = props.environment;
     if (!props.forceDockerBundling) {
@@ -81,11 +81,14 @@ export class VueCliBundling implements cdk.BundlingOptions {
   private createBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string {
     const npx = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
     const vueCliServeBuildCommand: string = [
+      // npx,
+      // 'npm',
+      // 'install',
+      // ';',
       npx,
       'vue-cli-service',
       'build',
       bundlingArguments,
-      '--no-install',
       '--no-clean',
       `--dest ${outputDir}`,
     ].join(' ');

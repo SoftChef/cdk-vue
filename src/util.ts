@@ -63,6 +63,5 @@ export function exec(cmd: string, args: string[], options?: SpawnSyncOptions) {
     }
     throw new Error(`${cmd} exited with status ${proc.status}`);
   }
-
   return proc;
 }
