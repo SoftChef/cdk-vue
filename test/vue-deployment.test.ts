@@ -13,7 +13,7 @@ describe('VueDeployment construct', () => {
       bucketName: 'test-bucket-name',
     });
     new VueDeployment(stack, 'Website', {
-      source: './test/mock-website',
+      source: './mock/website',
       forceDockerBundling: true,
       bucket: bucket,
       websiteDirectoryPrefix: 'website',
