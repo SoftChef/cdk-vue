@@ -6,7 +6,7 @@ import { VueDeployment } from '../src/index';
 import * as util from '../src/util';
 
 describe('VueDeployment construct', () => {
-  test('locally bundling', () => {
+  test('Docker bundling', () => {
     const app = new cdk.App();
     const stack = new cdk.Stack(app, 'WebsiteStack');
     const bucket = new s3.Bucket(stack, 'WebsiteBucket', {
@@ -14,7 +14,7 @@ describe('VueDeployment construct', () => {
     });
     new VueDeployment(stack, 'Website', {
       source: './test/mock-website',
-      runsLocally: true,
+      forceDockerBundling: true,
       bucket: bucket,
       websiteDirectoryPrefix: 'website',
       indexHtml: 'index.test.html',
@@ -33,16 +33,6 @@ describe('VueDeployment construct', () => {
     expect(stack).toHaveResource('AWS::CloudFormation::CustomResource');
     expect(stack).toHaveResource('AWS::Lambda::Function');
     expect(stack).toHaveResource('AWS::IAM::Role');
-  });
-  test('docker bundling', () => {
-    const app = new cdk.App();
-    const stack = new cdk.Stack(app, 'WebsiteStack');
-    new VueDeployment(stack, 'Website', {
-      source: './test/mock-website',
-      forceDockerBundling: true,
-    });
-    // THEN
-    expect(stack).toHaveResource('Custom::CDKBucketDeployment');
   });
   test('util', () => {
     const npxVersion = util.getNpxVersion();
