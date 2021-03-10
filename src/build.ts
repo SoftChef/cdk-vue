@@ -89,6 +89,7 @@ export class VueCliBundling implements cdk.BundlingOptions {
       'vue-cli-service',
       'build',
       bundlingArguments,
+      '--no-install',
       '--no-clean',
       `--dest ${outputDir}`,
     ].join(' ');
