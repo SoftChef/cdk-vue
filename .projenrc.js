@@ -2,9 +2,8 @@ const { AwsCdkConstructLibrary } = require('projen');
 
 const project = new AwsCdkConstructLibrary({
   author: 'MinCheTsai',
-  authorAddress: 'minche@softchef.com',
+  authorEmail: 'minche@softchef.com',
   authorOrganization: 'SoftChef',
-  authorUrl: 'https://softchef.com',
   cdkVersion: '1.92.0',
   releaseBranches: ['main'],
   defaultReleaseBranch: 'main',
