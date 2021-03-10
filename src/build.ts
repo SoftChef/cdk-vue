@@ -81,10 +81,10 @@ export class VueCliBundling implements cdk.BundlingOptions {
   private createBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string {
     const npx = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
     const vueCliServeBuildCommand: string = [
-      // npx,
-      // 'npm',
-      // 'install',
-      // ';',
+      npx,
+      'npm',
+      'install',
+      ';',
       npx,
       'vue-cli-service',
       'build',
