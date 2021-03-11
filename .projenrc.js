@@ -19,9 +19,6 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-s3-deployment',
     '@aws-cdk/core',
   ],
-  cdkTestDependencies: [
-    '@vue/cli',
-  ],
   keywords: [
     'cdk',
     'vue',
