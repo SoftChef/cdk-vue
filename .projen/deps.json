@@ -23,6 +23,10 @@
       "type": "build"
     },
     {
+      "name": "@vue/cli",
+      "type": "build"
+    },
+    {
       "name": "eslint",
       "type": "build"
     },
@@ -69,7 +73,7 @@
     },
     {
       "name": "projen",
-      "version": "^0.16.38",
+      "version": "^0.16.42",
       "type": "build"
     },
     {
