@@ -3,10 +3,10 @@ const { AwsCdkConstructLibrary } = require('projen');
 const project = new AwsCdkConstructLibrary({
   author: 'MinCheTsai',
   authorEmail: 'minche@softchef.com',
-  cdkVersion: '1.98.0',
+  cdkVersion: '1.100.0',
   releaseBranches: ['main'],
   defaultReleaseBranch: 'main',
-  dependabot: true,
+  dependabot: false,
   jsiiFqn: 'projen.AwsCdkConstructLibrary',
   name: 'sccdk-vue',
   repositoryUrl: 'https://github.com/softchef/sccdk-vue.git',
@@ -21,6 +21,7 @@ const project = new AwsCdkConstructLibrary({
   ],
   devDeps: [
     '@vue/cli',
+    'esbuild',
   ],
   keywords: [
     'cdk',
