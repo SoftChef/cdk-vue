@@ -18,17 +18,17 @@ export class VueCliBundling implements cdk.BundlingOptions {
     );
   }
 
-  private static runsLocally?: boolean | true
+  private static runsLocally?: boolean | true;
 
-  public readonly image: cdk.BundlingDockerImage
+  public readonly image: cdk.DockerImage;
 
-  public readonly command?: string[] | undefined
+  public readonly command?: string[] | undefined;
 
-  public readonly environment?: { [key: string]: string } | {}
+  public readonly environment?: { [key: string]: string } | {};
 
-  public readonly bundlingArguments?: string | ''
+  public readonly bundlingArguments?: string | '';
 
-  public readonly local?: cdk.ILocalBundling | undefined
+  public readonly local?: cdk.ILocalBundling | undefined;
 
   constructor(props: VueCliBuildProps) {
     VueCliBundling.runsLocally = (getNpxVersion()?.startsWith(NPX_MAJOR_VERSION) && getVueCliVersion()?.startsWith('@vue/cli')) ?? false;
