@@ -3,7 +3,7 @@ const { AwsCdkConstructLibrary } = require('projen');
 const project = new AwsCdkConstructLibrary({
   author: 'MinCheTsai',
   authorEmail: 'minche@softchef.com',
-  cdkVersion: '1.102.0',
+  cdkVersion: '1.105.0',
   releaseBranches: ['main'],
   defaultReleaseBranch: 'main',
   dependabot: false,
