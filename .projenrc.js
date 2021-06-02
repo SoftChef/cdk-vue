@@ -3,7 +3,7 @@ const { AwsCdkConstructLibrary } = require('projen');
 const project = new AwsCdkConstructLibrary({
   author: 'softchef-iot-lab',
   authorEmail: 'poke@softchef.com',
-  authorOrganization: 'softchef',
+  authorOrganization: true,
   cdkVersion: '1.106.1',
   releaseBranches: ['main'],
   defaultReleaseBranch: 'main',

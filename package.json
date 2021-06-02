@@ -28,7 +28,7 @@
   "author": {
     "name": "softchef-iot-lab",
     "email": "poke@softchef.com",
-    "organization": "softchef"
+    "organization": true
   },
   "devDependencies": {
     "@aws-cdk/assert": "^1.106.1",

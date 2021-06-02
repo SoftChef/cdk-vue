@@ -9,14 +9,14 @@ If you have many resource arguments will pass to frontend, the config property w
 ## Installation
 
 ```
-  npm install sccdk-vue
+  npm install @softchef/cdk-vue
   // or
-  yarn add sccdk-vue
+  yarn add @softchef/cdk-vue
 ```
 
 ## Example
 ```
-import { VueDeployment } from 'sccdk-vue'
+import { VueDeployment } from '@softchef/cdk-vue'
 // In your stack
 // Basic deployment
 const website = new VueDeployment(this, 'Website', {
