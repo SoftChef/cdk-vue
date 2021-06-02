@@ -1,15 +1,16 @@
 const { AwsCdkConstructLibrary } = require('projen');
 
 const project = new AwsCdkConstructLibrary({
-  author: 'MinCheTsai',
-  authorEmail: 'minche@softchef.com',
+  author: 'softchef-iot-lab',
+  authorEmail: 'poke@softchef.com',
+  authorOrganization: 'softchef',
   cdkVersion: '1.106.1',
   releaseBranches: ['main'],
   defaultReleaseBranch: 'main',
   dependabot: false,
   jsiiFqn: 'projen.AwsCdkConstructLibrary',
-  name: 'sccdk-vue',
-  repositoryUrl: 'https://github.com/softchef/sccdk-vue.git',
+  name: '@softchef/cdk-vue',
+  repositoryUrl: 'https://github.com/SoftChef/cdk-vue.git',
   cdkDependencies: [
     '@aws-cdk/aws-cloudfront',
     '@aws-cdk/aws-cloudfront-origins',

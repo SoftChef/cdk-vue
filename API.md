@@ -4,18 +4,18 @@
 
 Name|Description
 ----|-----------
-[VueDeployment](#sccdk-vue-vuedeployment)|*No description*
+[VueDeployment](#softchef-cdk-vue-vuedeployment)|*No description*
 
 
 **Structs**
 
 Name|Description
 ----|-----------
-[VueDeploymentProps](#sccdk-vue-vuedeploymentprops)|*No description*
+[VueDeploymentProps](#softchef-cdk-vue-vuedeploymentprops)|*No description*
 
 
 
-## class VueDeployment  <a id="sccdk-vue-vuedeployment"></a>
+## class VueDeployment  <a id="softchef-cdk-vue-vuedeployment"></a>
 
 
 
@@ -33,7 +33,7 @@ new VueDeployment(scope: Construct, id: string, props: VueDeploymentProps)
 
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
-* **props** (<code>[VueDeploymentProps](#sccdk-vue-vuedeploymentprops)</code>)  *No description*
+* **props** (<code>[VueDeploymentProps](#softchef-cdk-vue-vuedeploymentprops)</code>)  *No description*
   * **source** (<code>string</code>)  *No description* 
   * **bucket** (<code>[Bucket](#aws-cdk-aws-s3-bucket)</code>)  *No description* __*Optional*__
   * **bucketName** (<code>string</code>)  *No description* __*Optional*__
@@ -61,7 +61,7 @@ Name | Type | Description
 
 
 
-## struct VueDeploymentProps  <a id="sccdk-vue-vuedeploymentprops"></a>
+## struct VueDeploymentProps  <a id="softchef-cdk-vue-vuedeploymentprops"></a>
 
 
 
