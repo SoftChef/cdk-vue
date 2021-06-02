@@ -120,7 +120,7 @@
       "description": "Bumps version based on latest git tag and generates a changelog entry",
       "env": {
         "OUTFILE": "package.json",
-        "INITIAL_VERSION": "v0.1.0"
+        "INITIAL_VERSION": "1.0.0"
       },
       "steps": [
         {
