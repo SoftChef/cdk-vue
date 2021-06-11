@@ -55,11 +55,7 @@
     http-errors "^1.7.3"
     object-path "^0.11.4"
 
-<<<<<<< HEAD
 "@aws-cdk/assert@^1.108.0":
-=======
-"@aws-cdk/assert@^1.107.0":
->>>>>>> 82e7f412202ed27547cd5968ae49c5097eebcb29
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/assert/-/assert-1.108.0.tgz#fa36dc5c9c1d39140e6a74a6a8f77c757c461d35"
   integrity sha512-gAcqc3qVhP79WO9XJK0ITXp3QbgI+ThC5U7643gHLSxG7Izqrk6zD27c9xMmckOWvGognOLyKB4KdYvcg3RDkw==
@@ -122,11 +118,7 @@
     "@aws-cdk/cx-api" "1.108.0"
     constructs "^3.3.69"
 
-<<<<<<< HEAD
 "@aws-cdk/aws-cloudfront-origins@^1.108.0":
-=======
-"@aws-cdk/aws-cloudfront-origins@^1.107.0":
->>>>>>> 82e7f412202ed27547cd5968ae49c5097eebcb29
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudfront-origins/-/aws-cloudfront-origins-1.108.0.tgz#4ab2b69ebfe8ec05e25f53dce887ad067a06ce55"
   integrity sha512-ZO8SDhCyGnuFBYrXHSEatB+hJlIevxWWATxdBObHBoz39+IrG2Uj9I3j+pX2Qxr2tcsJxd5XZs/9kwSS9uw4sQ==
@@ -138,11 +130,7 @@
     "@aws-cdk/core" "1.108.0"
     constructs "^3.3.69"
 
-<<<<<<< HEAD
 "@aws-cdk/aws-cloudfront@1.108.0", "@aws-cdk/aws-cloudfront@^1.108.0":
-=======
-"@aws-cdk/aws-cloudfront@1.108.0", "@aws-cdk/aws-cloudfront@^1.107.0":
->>>>>>> 82e7f412202ed27547cd5968ae49c5097eebcb29
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudfront/-/aws-cloudfront-1.108.0.tgz#3fcd245d40b7b33936f072e5a7ae7f0c62a2e0af"
   integrity sha512-ebaaq4CDs8PPeiXsGDeQVeMfJ/aMPoLumDpnSMB35F3isn584YQN8yJCdgz9GJE1AFCs8u4ROP7aAaSzv33j2g==
@@ -256,11 +244,7 @@
     "@aws-cdk/core" "1.108.0"
     constructs "^3.3.69"
 
-<<<<<<< HEAD
 "@aws-cdk/aws-iam@1.108.0", "@aws-cdk/aws-iam@^1.108.0":
-=======
-"@aws-cdk/aws-iam@1.108.0", "@aws-cdk/aws-iam@^1.107.0":
->>>>>>> 82e7f412202ed27547cd5968ae49c5097eebcb29
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-iam/-/aws-iam-1.108.0.tgz#15227c0f2ba6247e103dd3cdfc2d02b023c7f537"
   integrity sha512-M9sr9Rhla1tg75fI2RppSPtspsB2ELiGLgf/JXlMkgUJD7gF3AnXssxjiXTCxXz6Ow9i29vPYbLnK3OF042zeg==
@@ -279,11 +263,7 @@
     "@aws-cdk/cx-api" "1.108.0"
     constructs "^3.3.69"
 
-<<<<<<< HEAD
 "@aws-cdk/aws-lambda-nodejs@^1.108.0":
-=======
-"@aws-cdk/aws-lambda-nodejs@^1.107.0":
->>>>>>> 82e7f412202ed27547cd5968ae49c5097eebcb29
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-lambda-nodejs/-/aws-lambda-nodejs-1.108.0.tgz#2476daa023b4059a6aef9d87acb69b579ecaf7dc"
   integrity sha512-Zp6/iLZfCnxIJnSOB1I34SqyoFZF4ibrcLQf91h/pIZJYZlhKCtFaxX4mZRrvATG5qIy+FK9ZpZBKLqNswRfbA==
@@ -354,11 +334,7 @@
     "@aws-cdk/cx-api" "1.108.0"
     constructs "^3.3.69"
 
-<<<<<<< HEAD
 "@aws-cdk/aws-s3-deployment@^1.108.0":
-=======
-"@aws-cdk/aws-s3-deployment@^1.107.0":
->>>>>>> 82e7f412202ed27547cd5968ae49c5097eebcb29
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-s3-deployment/-/aws-s3-deployment-1.108.0.tgz#2233c485a85bf562d174157519bd7ca9a024522d"
   integrity sha512-R6bIxZ3DIt9x2Eh00TpzPlkF84lIHwlDsgc4ecutAdGM2zNz0je1thQvvpdH0xLm3h9xNOkQiuYygDLAzV6rYw==
@@ -373,11 +349,7 @@
     "@aws-cdk/lambda-layer-awscli" "1.108.0"
     constructs "^3.3.69"
 
-<<<<<<< HEAD
 "@aws-cdk/aws-s3@1.108.0", "@aws-cdk/aws-s3@^1.108.0":
-=======
-"@aws-cdk/aws-s3@1.108.0", "@aws-cdk/aws-s3@^1.107.0":
->>>>>>> 82e7f412202ed27547cd5968ae49c5097eebcb29
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-s3/-/aws-s3-1.108.0.tgz#9e4bb386fd09c76b7c4b428dc80eb977e75a52ff"
   integrity sha512-Pi7vlhSFrFfg4DMxxiW93ZkLS7232RatV7bmViPQPfqlSlYBxjwlrQL46o9T9CcNihXW93GzbTSgz5Hm7liwIg==
@@ -460,11 +432,7 @@
     string-width "^4.2.2"
     table "^6.7.1"
 
-<<<<<<< HEAD
 "@aws-cdk/core@1.108.0", "@aws-cdk/core@^1.108.0":
-=======
-"@aws-cdk/core@1.108.0", "@aws-cdk/core@^1.107.0":
->>>>>>> 82e7f412202ed27547cd5968ae49c5097eebcb29
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/core/-/core-1.108.0.tgz#5349572bf1da6627d79a6dbc3ec85d0fbf073a58"
   integrity sha512-PQHFfm/0QE85Mw9jMmpN/hMMUHywceJddInVZbCUBySh1E57k5bHaY0v7Dv92ehoHXk+wShbaXinzwcQz8ROfQ==
