@@ -4572,9 +4572,9 @@ es-to-primitive@^1.2.1:
     is-symbol "^1.0.2"
 
 esbuild@^0.12.8:
-  version "0.12.8"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.8.tgz#ac90da77cb3bfbf49ab815200bcef7ffe1a3348f"
-  integrity sha512-sx/LwlP/SWTGsd9G4RlOPrXnIihAJ2xwBUmzoqe2nWwbXORMQWtAGNJNYLBJJqa3e9PWvVzxdrtyFZJcr7D87g==
+  version "0.12.9"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.9.tgz#bed4e7087c286cd81d975631f77d47feb1660070"
+  integrity sha512-MWRhAbMOJ9RJygCrt778rz/qNYgA4ZVj6aXnNPxFjs7PmIpb0fuB9Gmg5uWrr6n++XKwwm/RmSz6RR5JL2Ocsw==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -7104,9 +7104,9 @@ jsii-diff@^1.30.0:
     yargs "^16.2.0"
 
 jsii-docgen@^1.8.96:
-  version "1.8.96"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-1.8.96.tgz#e8684288b5116868a9e4c9e1c9743eeb4f31c102"
-  integrity sha512-5FqDTBR/Bu5RUZ3/EIuD8ElaBuy9WXp0AbNP3tyi46HaLwRCYMlkz1myesVLMp66TD+uqUjeF9XrqQG2UkByxA==
+  version "1.8.97"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-1.8.97.tgz#009777b621b0b31639363d9f9a70cb3cc196c66f"
+  integrity sha512-vA6Yja3t+o/3iS+rkSCMPLg7gf9CxjuuA4F7fyqwE1ODqYbe5nv7YpUqRDGWge0eU6S4nVnwMiDBAAOSRc2D5w==
   dependencies:
     "@jsii/spec" "^1.30.0"
     fs-extra "^9.1.0"
