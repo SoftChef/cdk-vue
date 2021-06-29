@@ -4,7 +4,7 @@ const project = new AwsCdkConstructLibrary({
   author: 'softchef-iot-lab',
   authorEmail: 'poke@softchef.com',
   npmAccess: NpmAccess.PUBLIC,
-  cdkVersion: '1.110.0',
+  cdkVersion: '1.110.1',
   projenVersion: '0.24.12',
   initialVersion: '1.0.0',
   defaultReleaseBranch: 'main',
