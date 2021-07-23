@@ -6,6 +6,8 @@ VueJs will build on local environment or docker container, it's based with Vue-C
 
 If you have many resource arguments will pass to frontend, the config property will generate config.js to specify S3 bucket. It's a VueJs extendsion and archive config in Vue.$config operation.
 
+![Architecture](docs/cdk-vue.png)
+
 ## Installation
 
 ```
