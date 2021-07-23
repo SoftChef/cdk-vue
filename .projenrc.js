@@ -4,13 +4,10 @@ const project = new AwsCdkConstructLibrary({
   author: 'softchef-iot-lab',
   authorEmail: 'poke@softchef.com',
   npmAccess: NpmAccess.PUBLIC,
-  cdkVersion: '1.114.0',
-  projenVersion: '0.27.6',
-  initialVersion: '1.0.0',
+  cdkVersion: '1.95.2',
   defaultReleaseBranch: 'main',
-  dependabot: false,
-  jsiiFqn: 'projen.AwsCdkConstructLibrary',
   name: '@softchef/cdk-vue',
+  description: 'Auto deploy website with VueJs to S3 bucket and CloudFront distribution.',
   repositoryUrl: 'https://github.com/SoftChef/cdk-vue.git',
   cdkDependencies: [
     '@aws-cdk/aws-cloudfront',
@@ -26,8 +23,13 @@ const project = new AwsCdkConstructLibrary({
     'esbuild',
   ],
   keywords: [
+    'aws',
     'cdk',
     'vue',
+    'vuejs',
+    'cloudfront',
+    'cdn',
+    'web',
   ],
 });
 
