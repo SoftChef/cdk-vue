@@ -1,5 +1,6 @@
 {
   "name": "@softchef/cdk-vue",
+  "description": "Auto deploy website with VueJs to S3 bucket and CloudFront distribution.",
   "repository": {
     "type": "git",
     "url": "https://github.com/SoftChef/cdk-vue.git"
@@ -33,7 +34,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.114.0",
+    "@aws-cdk/assert": "^1.95.2",
     "@types/jest": "^26.0.23",
     "@types/node": "^10.17.0",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
@@ -58,28 +59,33 @@
     "typescript": "^4.3.2"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-cloudfront": "^1.114.0",
-    "@aws-cdk/aws-cloudfront-origins": "^1.114.0",
-    "@aws-cdk/aws-iam": "^1.114.0",
-    "@aws-cdk/aws-lambda-nodejs": "^1.114.0",
-    "@aws-cdk/aws-s3": "^1.114.0",
-    "@aws-cdk/aws-s3-deployment": "^1.114.0",
-    "@aws-cdk/core": "^1.114.0",
+    "@aws-cdk/aws-cloudfront": "^1.95.2",
+    "@aws-cdk/aws-cloudfront-origins": "^1.95.2",
+    "@aws-cdk/aws-iam": "^1.95.2",
+    "@aws-cdk/aws-lambda-nodejs": "^1.95.2",
+    "@aws-cdk/aws-s3": "^1.95.2",
+    "@aws-cdk/aws-s3-deployment": "^1.95.2",
+    "@aws-cdk/core": "^1.95.2",
     "constructs": "^3.2.27"
   },
   "dependencies": {
-    "@aws-cdk/aws-cloudfront": "^1.114.0",
-    "@aws-cdk/aws-cloudfront-origins": "^1.114.0",
-    "@aws-cdk/aws-iam": "^1.114.0",
-    "@aws-cdk/aws-lambda-nodejs": "^1.114.0",
-    "@aws-cdk/aws-s3": "^1.114.0",
-    "@aws-cdk/aws-s3-deployment": "^1.114.0",
-    "@aws-cdk/core": "^1.114.0"
+    "@aws-cdk/aws-cloudfront": "^1.95.2",
+    "@aws-cdk/aws-cloudfront-origins": "^1.95.2",
+    "@aws-cdk/aws-iam": "^1.95.2",
+    "@aws-cdk/aws-lambda-nodejs": "^1.95.2",
+    "@aws-cdk/aws-s3": "^1.95.2",
+    "@aws-cdk/aws-s3-deployment": "^1.95.2",
+    "@aws-cdk/core": "^1.95.2"
   },
   "bundledDependencies": [],
   "keywords": [
+    "aws",
     "cdk",
-    "vue"
+    "cdn",
+    "cloudfront",
+    "vue",
+    "vuejs",
+    "web"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
