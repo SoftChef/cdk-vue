@@ -30,7 +30,8 @@
   "author": {
     "name": "SoftChef",
     "email": "poke@softchef.com",
-    "organization": false
+    "url": "https://www.softchef.com",
+    "organization": true
   },
   "devDependencies": {
     "@aws-cdk/assert": "^1.95.2",

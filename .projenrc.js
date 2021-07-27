@@ -5,6 +5,8 @@ const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 const project = new AwsCdkConstructLibrary({
   author: 'SoftChef',
   authorEmail: 'poke@softchef.com',
+  authorUrl: 'https://www.softchef.com',
+  authorOrganization: true,
   homepage: 'https://www.softchef.com',
   npmAccess: NpmAccess.PUBLIC,
   cdkVersion: '1.95.2',
