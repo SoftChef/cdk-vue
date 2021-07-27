@@ -89,7 +89,6 @@
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
-  "homepage": "https://www.softchef.com",
   "publishConfig": {
     "access": "public"
   },
