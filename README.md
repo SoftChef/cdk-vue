@@ -1,5 +1,9 @@
 # AWS CDK with VueJs
 
+[![npm version](https://badge.fury.io/js/%40softchef%2Fcdk-vue.svg)](https://badge.fury.io/js/%40softchef%2Fcdk-vue)
+![Release](https://github.com/SoftChef/cdk-vue/workflows/Release/badge.svg)
+![npm](https://img.shields.io/npm/dt/@softchef/cdk-vue?label=NPM%20Downloads&color=orange)
+
 AWS CDK with VueJs package will auto deploy website with VueJs to S3 bucket and CloudFront distribution.
 
 VueJs will build on local environment or docker container, it's based with Vue-CLI project. Then use S3-Deployment to upload to specify S3 bucket.

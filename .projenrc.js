@@ -3,8 +3,10 @@ const { AwsCdkConstructLibrary, DependenciesUpgradeMechanism, NpmAccess } = requ
 const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
 const project = new AwsCdkConstructLibrary({
-  author: 'softchef-iot-lab',
+  author: 'SoftChef',
   authorEmail: 'poke@softchef.com',
+  authorUrl: 'https://www.softchef.com',
+  authorOrganization: true,
   npmAccess: NpmAccess.PUBLIC,
   cdkVersion: '1.95.2',
   defaultReleaseBranch: 'main',

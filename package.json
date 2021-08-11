@@ -28,22 +28,23 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "softchef-iot-lab",
+    "name": "SoftChef",
     "email": "poke@softchef.com",
-    "organization": false
+    "url": "https://www.softchef.com",
+    "organization": true
   },
   "devDependencies": {
     "@aws-cdk/assert": "^1.95.2",
     "@types/jest": "^26.0.24",
     "@types/node": "^10.17.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.5",
-    "@typescript-eslint/parser": "^4.28.5",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
     "@vue/cli": "^4.5.13",
-    "esbuild": "^0.12.16",
-    "eslint": "^7.31.0",
-    "eslint-import-resolver-node": "^0.3.4",
+    "esbuild": "^0.12.19",
+    "eslint": "^7.32.0",
+    "eslint-import-resolver-node": "^0.3.5",
     "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-import": "^2.24.0",
     "jest": "^26.6.3",
     "jest-junit": "^12",
     "jsii": "^1.32.0",
