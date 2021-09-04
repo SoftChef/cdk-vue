@@ -13,6 +13,7 @@ const project = new AwsCdkConstructLibrary({
   name: '@softchef/cdk-vue',
   description: 'Auto deploy website with VueJs to S3 bucket and CloudFront distribution.',
   repositoryUrl: 'https://github.com/SoftChef/cdk-vue.git',
+  minNodeVersion: '12.0.0',
   cdkDependencies: [
     '@aws-cdk/aws-cloudfront',
     '@aws-cdk/aws-cloudfront-origins',
