@@ -11,7 +11,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^10.17.0",
+      "version": "^12.0.0",
       "type": "build"
     },
     {
@@ -96,11 +96,6 @@
     {
       "name": "typescript",
       "type": "build"
-    },
-    {
-      "name": "@types/node",
-      "version": "16.7.10",
-      "type": "bundled"
     },
     {
       "name": "@aws-cdk/aws-cloudfront-origins",
