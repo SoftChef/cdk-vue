@@ -22,6 +22,9 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-s3-deployment',
     '@aws-cdk/core',
   ],
+  bundledDeps: [
+    '@types/node@16.7.10',
+  ],
   devDeps: [
     '@vue/cli',
     'esbuild',

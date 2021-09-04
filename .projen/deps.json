@@ -98,6 +98,11 @@
       "type": "build"
     },
     {
+      "name": "@types/node",
+      "version": "16.7.10",
+      "type": "bundled"
+    },
+    {
       "name": "@aws-cdk/aws-cloudfront-origins",
       "version": "^1.95.2",
       "type": "peer"

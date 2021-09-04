@@ -75,9 +75,12 @@
     "@aws-cdk/aws-lambda-nodejs": "^1.95.2",
     "@aws-cdk/aws-s3": "^1.95.2",
     "@aws-cdk/aws-s3-deployment": "^1.95.2",
-    "@aws-cdk/core": "^1.95.2"
+    "@aws-cdk/core": "^1.95.2",
+    "@types/node": "16.7.10"
   },
-  "bundledDependencies": [],
+  "bundledDependencies": [
+    "@types/node"
+  ],
   "keywords": [
     "aws",
     "cdk",
