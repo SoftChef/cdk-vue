@@ -36,9 +36,9 @@
   "devDependencies": {
     "@aws-cdk/assert": "^1.95.2",
     "@types/jest": "^26.0.24",
-    "@types/node": "^14.15.0",
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
+    "@types/node": "^14.17.0",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
     "@vue/cli": "^4.5.13",
     "esbuild": "^0.12.26",
     "eslint": "^7.32.0",
@@ -88,7 +88,7 @@
     "web"
   ],
   "engines": {
-    "node": ">= 14.15.0"
+    "node": ">= 14.17.0"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
