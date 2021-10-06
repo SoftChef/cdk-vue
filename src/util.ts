@@ -53,6 +53,7 @@ export function osPathJoin(platform: NodeJS.Platform) {
  * Spawn sync with error handling
  */
 export function exec(cmd: string, args: string[], options?: SpawnSyncOptions) {
+  console.log(cmd, args, options);
   const proc = spawnSync(cmd, args, options);
   if (proc.error) {
     throw proc.error;
