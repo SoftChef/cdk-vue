@@ -53,24 +53,15 @@ export function osPathJoin(platform: NodeJS.Platform) {
  * Spawn sync with error handling
  */
 export function exec(cmd: string, args: string[], options?: SpawnSyncOptions) {
-  try {
-    console.log('sp', cmd, args, options);
-    const proc = spawnSync(cmd, args, options);
-    console.log('proc', proc);
-    if (proc.error) {
-      return proc.error;
-    }
-    if (proc.status !== 0) {
-      if (proc.stdout || proc.stderr) {
-        return new Error(`[Status ${proc.status}] stdout: ${proc.stdout?.toString().trim()}\n\n\nstderr: ${proc.stderr?.toString().trim()}`);
-      }
-      return new Error(`${cmd} exited with status ${proc.status}`);
-    }
-    return proc;
-  } catch (error) {
-    console.log('eee', error);
-    return error;
+  const proc = spawnSync(cmd, args, options);
+  if (proc.error) {
+    throw proc.error;
   }
-  // console.log('proc', proc);
-  // return proc;
+  if (proc.status !== 0) {
+    if (proc.stdout || proc.stderr) {
+      throw new Error(`[Status ${proc.status}] stdout: ${proc.stdout?.toString().trim()}\n\n\nstderr: ${proc.stderr?.toString().trim()}`);
+    }
+    throw new Error(`${cmd} exited with status ${proc.status}`);
+  }
+  return proc;
 }

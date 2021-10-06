@@ -40,14 +40,17 @@ describe('VueDeployment construct', () => {
     const osPathJoin = util.osPathJoin(
       os.platform(),
     );
-    // const { stdout: execNpxVersion } = util.exec('npx', ['-v']);
-    // const proc = util.exec('npx', ['-v']);
-    // console.log('test', proc);
+    const { stdout: execNpxVersion } = util.exec('npx', ['-v']);
     expect(npxVersion).not.toBeNull();
     expect(vueCliVersion).not.toBeNull();
-    // expect(execNpxVersion.toString().trim()).toEqual(npxVersion);
+    expect(execNpxVersion.toString().trim()).toEqual(npxVersion);
     expect(osPathJoin('/')).toEqual('/');
-    console.log(util.exec('cd', ['x']));
-    expect(util.exec('cd', ['x'])).toBe(Error);
+    expect(() => {
+      try {
+        util.exec('cd', ['x']);
+      } catch (error) {
+        throw error;
+      }
+    }).toThrow(Error);
   });
 });
