@@ -1,87 +1,211 @@
-# API Reference
+# API Reference <a name="API Reference"></a>
 
-**Classes**
+## Constructs <a name="Constructs"></a>
 
-Name|Description
-----|-----------
-[VueDeployment](#softchef-cdk-vue-vuedeployment)|*No description*
+### VueDeployment <a name="@softchef/cdk-vue.VueDeployment"></a>
 
+#### Initializers <a name="@softchef/cdk-vue.VueDeployment.Initializer"></a>
 
-**Structs**
+```typescript
+import { VueDeployment } from '@softchef/cdk-vue'
 
-Name|Description
-----|-----------
-[VueDeploymentProps](#softchef-cdk-vue-vuedeploymentprops)|*No description*
-
-
-
-## class VueDeployment  <a id="softchef-cdk-vue-vuedeployment"></a>
-
-
-
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
-__Extends__: [Construct](#aws-cdk-core-construct)
-
-### Initializer
-
-
-
-
-```ts
 new VueDeployment(scope: Construct, id: string, props: VueDeploymentProps)
 ```
 
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
-* **id** (<code>string</code>)  *No description*
-* **props** (<code>[VueDeploymentProps](#softchef-cdk-vue-vuedeploymentprops)</code>)  *No description*
-  * **source** (<code>string</code>)  *No description* 
-  * **bucket** (<code>[Bucket](#aws-cdk-aws-s3-bucket)</code>)  *No description* __*Optional*__
-  * **bucketName** (<code>string</code>)  *No description* __*Optional*__
-  * **bundlingArguments** (<code>string</code>)  *No description* __*Optional*__
-  * **config** (<code>Map<string, any></code>)  *No description* __*Optional*__
-  * **configJsKey** (<code>string</code>)  *No description* __*Optional*__
-  * **enableIpv6** (<code>boolean</code>)  *No description* __*Optional*__
-  * **environment** (<code>Map<string, string></code>)  *No description* __*Optional*__
-  * **forceDockerBundling** (<code>boolean</code>)  *No description* __*Optional*__
-  * **indexHtml** (<code>string</code>)  *No description* __*Optional*__
-  * **runsLocally** (<code>boolean</code>)  *No description* __*Optional*__
-  * **websiteDirectoryPrefix** (<code>string</code>)  *No description* __*Optional*__
+##### `scope`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.parameter.scope"></a>
+
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.parameter.id"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.parameter.props"></a>
+
+- *Type:* [`@softchef/cdk-vue.VueDeploymentProps`](#@softchef/cdk-vue.VueDeploymentProps)
+
+---
 
 
 
-### Properties
+#### Properties <a name="Properties"></a>
+
+##### `bucket`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.property.bucket"></a>
+
+```typescript
+public readonly bucket: Bucket;
+```
+
+- *Type:* [`@aws-cdk/aws-s3.Bucket`](#@aws-cdk/aws-s3.Bucket)
+
+---
+
+##### `bucketDeployment`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.property.bucketDeployment"></a>
+
+```typescript
+public readonly bucketDeployment: BucketDeployment;
+```
+
+- *Type:* [`@aws-cdk/aws-s3-deployment.BucketDeployment`](#@aws-cdk/aws-s3-deployment.BucketDeployment)
+
+---
+
+##### `cloudfrontDistribution`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.property.cloudfrontDistribution"></a>
+
+```typescript
+public readonly cloudfrontDistribution: Distribution;
+```
+
+- *Type:* [`@aws-cdk/aws-cloudfront.Distribution`](#@aws-cdk/aws-cloudfront.Distribution)
+
+---
+
+##### `uploadConfig`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.property.uploadConfig"></a>
+
+```typescript
+public readonly uploadConfig: CustomResource;
+```
+
+- *Type:* [`@aws-cdk/core.CustomResource`](#@aws-cdk/core.CustomResource)
+
+---
 
 
-Name | Type | Description 
------|------|-------------
-**bucket** | <code>[Bucket](#aws-cdk-aws-s3-bucket)</code> | <span></span>
-**bucketDeployment** | <code>[BucketDeployment](#aws-cdk-aws-s3-deployment-bucketdeployment)</code> | <span></span>
-**cloudfrontDistribution** | <code>[Distribution](#aws-cdk-aws-cloudfront-distribution)</code> | <span></span>
-**uploadConfig** | <code>[CustomResource](#aws-cdk-core-customresource)</code> | <span></span>
+## Structs <a name="Structs"></a>
 
+### VueDeploymentProps <a name="@softchef/cdk-vue.VueDeploymentProps"></a>
 
+#### Initializer <a name="[object Object].Initializer"></a>
 
-## struct VueDeploymentProps  <a id="softchef-cdk-vue-vuedeploymentprops"></a>
+```typescript
+import { VueDeploymentProps } from '@softchef/cdk-vue'
 
+const vueDeploymentProps: VueDeploymentProps = { ... }
+```
 
+##### `source`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.source"></a>
 
+```typescript
+public readonly source: string;
+```
 
+- *Type:* `string`
 
+---
 
-Name | Type | Description 
------|------|-------------
-**source** | <code>string</code> | <span></span>
-**bucket**? | <code>[Bucket](#aws-cdk-aws-s3-bucket)</code> | __*Optional*__
-**bucketName**? | <code>string</code> | __*Optional*__
-**bundlingArguments**? | <code>string</code> | __*Optional*__
-**config**? | <code>Map<string, any></code> | __*Optional*__
-**configJsKey**? | <code>string</code> | __*Optional*__
-**enableIpv6**? | <code>boolean</code> | __*Optional*__
-**environment**? | <code>Map<string, string></code> | __*Optional*__
-**forceDockerBundling**? | <code>boolean</code> | __*Optional*__
-**indexHtml**? | <code>string</code> | __*Optional*__
-**runsLocally**? | <code>boolean</code> | __*Optional*__
-**websiteDirectoryPrefix**? | <code>string</code> | __*Optional*__
+##### `bucket`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.bucket"></a>
+
+```typescript
+public readonly bucket: Bucket;
+```
+
+- *Type:* [`@aws-cdk/aws-s3.Bucket`](#@aws-cdk/aws-s3.Bucket)
+
+---
+
+##### `bucketName`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.bucketName"></a>
+
+```typescript
+public readonly bucketName: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `bundlingArguments`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.bundlingArguments"></a>
+
+```typescript
+public readonly bundlingArguments: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `config`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.config"></a>
+
+```typescript
+public readonly config: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: `any`}
+
+---
+
+##### `configJsKey`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.configJsKey"></a>
+
+```typescript
+public readonly configJsKey: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `enableIpv6`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.enableIpv6"></a>
+
+```typescript
+public readonly enableIpv6: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
+##### `environment`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.environment"></a>
+
+```typescript
+public readonly environment: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: `string`}
+
+---
+
+##### `forceDockerBundling`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.forceDockerBundling"></a>
+
+```typescript
+public readonly forceDockerBundling: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
+##### `indexHtml`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.indexHtml"></a>
+
+```typescript
+public readonly indexHtml: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `runsLocally`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.runsLocally"></a>
+
+```typescript
+public readonly runsLocally: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
+##### `websiteDirectoryPrefix`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.websiteDirectoryPrefix"></a>
+
+```typescript
+public readonly websiteDirectoryPrefix: string;
+```
+
+- *Type:* `string`
+
+---
 
 
 
