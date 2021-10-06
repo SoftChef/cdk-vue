@@ -42,11 +42,11 @@ describe('VueDeployment construct', () => {
     );
     // const { stdout: execNpxVersion } = util.exec('npx', ['-v']);
     const proc = util.exec('npx', ['-v']);
-    console.log(proc);
+    console.log('test', proc);
     expect(npxVersion).not.toBeNull();
     expect(vueCliVersion).not.toBeNull();
     // expect(execNpxVersion.toString().trim()).toEqual(npxVersion);
     expect(osPathJoin('/')).toEqual('/');
-    expect(util.exec('cd', ['x'])).toBeInstanceOf('Error');
+    expect(util.exec('cd', ['x'])).toBeInstanceOf(Error);
   });
 });
