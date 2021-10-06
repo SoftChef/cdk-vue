@@ -71,6 +71,7 @@ export class VueCliBundling implements cdk.BundlingOptions {
               },
             );
           } catch (error) {
+            console.log(error);
             return false;
           }
           return true;
