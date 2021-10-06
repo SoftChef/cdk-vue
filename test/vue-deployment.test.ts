@@ -46,11 +46,7 @@ describe('VueDeployment construct', () => {
     expect(execNpxVersion.toString().trim()).toEqual(npxVersion);
     expect(osPathJoin('/')).toEqual('/');
     expect(() => {
-      try {
-        util.exec('cd', ['x']);
-      } catch (error) {
-        throw error;
-      }
+      util.exec('cd', ['x']);
     }).toThrow(Error);
   });
 });
