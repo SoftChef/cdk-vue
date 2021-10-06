@@ -45,8 +45,6 @@ describe('VueDeployment construct', () => {
     expect(vueCliVersion).not.toBeNull();
     expect(execNpxVersion.toString().trim()).toEqual(npxVersion);
     expect(osPathJoin('/')).toEqual('/');
-    expect(() => {
-      return util.exec('cd', ['x']);
-    }).toBeInstanceOf(Error);
+    expect(util.exec('cd', ['x'])).toBeInstanceOf(Error);
   });
 });
