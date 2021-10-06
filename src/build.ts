@@ -65,6 +65,7 @@ export class VueCliBundling implements cdk.BundlingOptions {
                   process.stderr,
                   'inherit',
                 ],
+                shell: true,
                 cwd: path.resolve(props.source),
                 windowsVerbatimArguments: osPlatform === 'win32',
               },
