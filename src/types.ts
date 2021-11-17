@@ -4,7 +4,9 @@ export interface VueCliBuildProps {
   readonly source: string;
 
   // vue-cli environments
-  readonly environment?: { [ key: string ]: string };
+  readonly environment?: {
+    [ key: string ]: string;
+  };
 
   readonly bundlingArguments?: string;
 
@@ -13,4 +15,6 @@ export interface VueCliBuildProps {
 
   // Force use docker to bundling
   readonly forceDockerBundling?: boolean;
+
+  readonly dockerNodeVersion?: string | 'lts' | 'latest';
 }

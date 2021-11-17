@@ -7,7 +7,9 @@ import * as lambda from '@aws-cdk/aws-lambda-nodejs';
 import * as s3 from '@aws-cdk/aws-s3';
 import * as s3Deploy from '@aws-cdk/aws-s3-deployment';
 import * as cdk from '@aws-cdk/core';
-import { VueCliBundling } from './build';
+import {
+  VueCliBundling,
+} from './build';
 
 export interface VueDeploymentProps {
 
@@ -28,7 +30,9 @@ export interface VueDeploymentProps {
 
   readonly enableIpv6?: boolean;
 
-  readonly environment?: { [ key: string ]: string };
+  readonly environment?: {
+    [ key: string ]: string;
+  };
 
   readonly bundlingArguments?: string;
 
@@ -42,7 +46,9 @@ export interface VueDeploymentProps {
   readonly configJsKey?: string;
 
   // Config will upload to web bucket
-  readonly config?: { [key: string]: any };
+  readonly config?: {
+    [key: string]: any;
+  };
 
 }
 
@@ -54,21 +60,20 @@ export class VueDeployment extends cdk.Construct {
 
   public readonly cloudfrontDistribution!: cloudfront.Distribution;
 
-  public readonly uploadConfig!: cdk.CustomResource;
+  public readonly uploadConfigResource!: cdk.CustomResource;
 
   private readonly websiteDirectoryPrefix: string;
 
   constructor(scope: cdk.Construct, id: string, props: VueDeploymentProps) {
     super(scope, id);
     this.websiteDirectoryPrefix = props.websiteDirectoryPrefix?.replace(/^\//, '') ?? '';
-    this.bucket = this._createOrGetBucket(scope, props);
-    this.bucketDeployment = this._createBucketDeployment(props);
-    this.cloudfrontDistribution = this._createCloudfrontDistribution(props);
-    this.uploadConfig = this._uploadConfig(props);
+    this.bucket = this.createOrGetBucket(scope, props);
+    this.bucketDeployment = this.createBucketDeployment(props);
+    this.cloudfrontDistribution = this.createCloudfrontDistribution(props);
+    this.uploadConfigResource = this.createUploadConfigResource(props);
   }
 
-  /** @internal */
-  _createOrGetBucket(scope: cdk.Construct, props: VueDeploymentProps) {
+  private createOrGetBucket(scope: cdk.Construct, props: VueDeploymentProps): s3.Bucket {
     let bucket: s3.Bucket;
     if (props.bucket) {
       bucket = props.bucket;
@@ -91,8 +96,7 @@ export class VueDeployment extends cdk.Construct {
     return bucket;
   }
 
-  /** @internal */
-  _createBucketDeployment(props: VueDeploymentProps) {
+  private createBucketDeployment(props: VueDeploymentProps): s3Deploy.BucketDeployment {
     const s3SourceAsset = VueCliBundling.bundling({
       source: props.source,
       runsLocally: props.runsLocally ?? true,
@@ -109,8 +113,7 @@ export class VueDeployment extends cdk.Construct {
     });
   }
 
-  /** @internal */
-  _uploadConfig(props: VueDeploymentProps) {
+  private createUploadConfigResource(props: VueDeploymentProps): cdk.CustomResource {
     const updateConfigFunctionRole = new iam.Role(this, 'UpdateConfigFunctionRole', {
       assumedBy: new iam.CompositePrincipal(
         new iam.ServicePrincipal('lambda.amazonaws.com'),
@@ -163,8 +166,7 @@ export class VueDeployment extends cdk.Construct {
     return uploadConfig;
   }
 
-  /** @internal */
-  _createCloudfrontDistribution(props: VueDeploymentProps) {
+  private createCloudfrontDistribution(props: VueDeploymentProps): cloudfront.Distribution {
     const indexHtml = props.indexHtml ?? 'index.html';
     return new cloudfront.Distribution(this, 'WebsiteDistribution', {
       defaultRootObject: indexHtml,
