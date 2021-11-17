@@ -16,5 +16,6 @@ export interface VueCliBuildProps {
   // Force use docker to bundling
   readonly forceDockerBundling?: boolean;
 
+  // Specify docker node version
   readonly dockerNodeVersion?: string | 'lts' | 'latest';
 }

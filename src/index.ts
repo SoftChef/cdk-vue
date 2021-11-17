@@ -42,6 +42,9 @@ export interface VueDeploymentProps {
   // Force use docker to bundling
   readonly forceDockerBundling?: boolean;
 
+  // Specify docker node version
+  readonly dockerNodeVersion?: string | 'lts' | 'latest';
+
   // Config.js in the web bucket key
   readonly configJsKey?: string;
 
@@ -101,6 +104,7 @@ export class VueDeployment extends cdk.Construct {
       source: props.source,
       runsLocally: props.runsLocally ?? true,
       forceDockerBundling: props.forceDockerBundling ?? false,
+      dockerNodeVersion: props.dockerNodeVersion,
       bundlingArguments: props.bundlingArguments,
       environment: props.environment,
     });
