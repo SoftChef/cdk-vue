@@ -147,6 +147,16 @@ public readonly configJsKey: string;
 
 ---
 
+##### `dockerNodeVersion`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.dockerNodeVersion"></a>
+
+```typescript
+public readonly dockerNodeVersion: string;
+```
+
+- *Type:* `string`
+
+---
+
 ##### `enableIpv6`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.enableIpv6"></a>
 
 ```typescript
