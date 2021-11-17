@@ -64,10 +64,10 @@ public readonly cloudfrontDistribution: Distribution;
 
 ---
 
-##### `uploadConfig`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.property.uploadConfig"></a>
+##### `uploadConfigResource`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.property.uploadConfigResource"></a>
 
 ```typescript
-public readonly uploadConfig: CustomResource;
+public readonly uploadConfigResource: CustomResource;
 ```
 
 - *Type:* [`@aws-cdk/core.CustomResource`](#@aws-cdk/core.CustomResource)

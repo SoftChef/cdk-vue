@@ -34,7 +34,7 @@ export class VueCliBundling implements cdk.BundlingOptions {
     VueCliBundling.runsLocally = (getNpxVersion()?.startsWith(NPX_MAJOR_VERSION) && getVueCliVersion()?.startsWith('@vue/cli')) ?? false;
     const bundlingArguments = props.bundlingArguments ?? '';
     const bundlingCommand = this.createBundlingCommand(cdk.AssetStaging.BUNDLING_OUTPUT_DIR, bundlingArguments);
-    this.image = cdk.DockerImage.fromRegistry('node:lts');
+    this.image = cdk.DockerImage.fromRegistry(`node:${props.dockerNodeVersion ?? '14.18.1'}`);
     this.command = ['bash', '-c', bundlingCommand];
     this.environment = props.environment;
     if (!props.forceDockerBundling) {
