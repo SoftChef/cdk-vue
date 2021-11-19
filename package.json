@@ -60,6 +60,7 @@
     "typescript": "^4.5.2"
   },
   "peerDependencies": {
+    "@aws-cdk/aws-certificatemanager": "^1.95.2",
     "@aws-cdk/aws-cloudfront": "^1.95.2",
     "@aws-cdk/aws-cloudfront-origins": "^1.95.2",
     "@aws-cdk/aws-iam": "^1.95.2",
@@ -70,6 +71,7 @@
     "constructs": "^3.2.27"
   },
   "dependencies": {
+    "@aws-cdk/aws-certificatemanager": "^1.95.2",
     "@aws-cdk/aws-cloudfront": "^1.95.2",
     "@aws-cdk/aws-cloudfront-origins": "^1.95.2",
     "@aws-cdk/aws-iam": "^1.95.2",

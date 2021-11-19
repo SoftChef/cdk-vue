@@ -98,6 +98,11 @@
       "type": "build"
     },
     {
+      "name": "@aws-cdk/aws-certificatemanager",
+      "version": "^1.95.2",
+      "type": "peer"
+    },
+    {
       "name": "@aws-cdk/aws-cloudfront-origins",
       "version": "^1.95.2",
       "type": "peer"
@@ -136,6 +141,11 @@
       "name": "constructs",
       "version": "^3.2.27",
       "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-certificatemanager",
+      "version": "^1.95.2",
+      "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-cloudfront-origins",
