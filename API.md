@@ -127,6 +127,16 @@ public readonly bundlingArguments: string;
 
 ---
 
+##### `certificate`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.certificate"></a>
+
+```typescript
+public readonly certificate: ICertificate;
+```
+
+- *Type:* [`@aws-cdk/aws-certificatemanager.ICertificate`](#@aws-cdk/aws-certificatemanager.ICertificate)
+
+---
+
 ##### `config`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.config"></a>
 
 ```typescript
@@ -154,6 +164,16 @@ public readonly dockerNodeVersion: string;
 ```
 
 - *Type:* `string`
+
+---
+
+##### `domainNames`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.domainNames"></a>
+
+```typescript
+public readonly domainNames: string[];
+```
+
+- *Type:* `string`[]
 
 ---
 

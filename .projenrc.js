@@ -16,6 +16,7 @@ const project = new AwsCdkConstructLibrary({
   minNodeVersion: '12.7.0',
   workflowNodeVersion: '12.13.0',
   cdkDependencies: [
+    '@aws-cdk/aws-certificatemanager',
     '@aws-cdk/aws-cloudfront',
     '@aws-cdk/aws-cloudfront-origins',
     '@aws-cdk/aws-iam',

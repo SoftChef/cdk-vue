@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as acm from '@aws-cdk/aws-certificatemanager';
 import * as cloudfront from '@aws-cdk/aws-cloudfront';
 import * as cloudfrontOrigins from '@aws-cdk/aws-cloudfront-origins';
 import * as iam from '@aws-cdk/aws-iam';
@@ -24,6 +25,12 @@ export interface VueDeploymentProps {
 
   // S3 bucket prefix
   readonly websiteDirectoryPrefix?: string;
+
+  // CloudFront certificate
+  readonly certificate?: acm.ICertificate;
+
+  // CloudFront domain names
+  readonly domainNames?: string[];
 
   // CloudFront distribution defaultRootObject
   readonly indexHtml?: string;
@@ -173,6 +180,8 @@ export class VueDeployment extends cdk.Construct {
   private createCloudfrontDistribution(props: VueDeploymentProps): cloudfront.Distribution {
     const indexHtml = props.indexHtml ?? 'index.html';
     return new cloudfront.Distribution(this, 'WebsiteDistribution', {
+      certificate: props.certificate,
+      domainNames: props.domainNames,
       defaultRootObject: indexHtml,
       defaultBehavior: {
         origin: new cloudfrontOrigins.S3Origin(this.bucket, {
