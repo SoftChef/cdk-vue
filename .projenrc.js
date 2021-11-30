@@ -29,15 +29,6 @@ const project = new AwsCdkConstructLibrary({
     '@vue/cli',
     'esbuild',
   ],
-  tsconfig: {
-    compilerOptions: {
-      target: 'ES2020',
-      lib: [
-        'ES2020',
-        'DOM',
-      ],
-    },
-  },
   depsUpgradeOptions: {
     ignoreProjen: false,
     workflowOptions: {
