@@ -29,6 +29,15 @@ const project = new AwsCdkConstructLibrary({
     '@vue/cli',
     'esbuild',
   ],
+  tsconfig: {
+    compilerOptions: {
+      target: 'ES2020',
+      lib: [
+        'ES2020',
+        'DOM',
+      ],
+    },
+  },
   depsUpgradeOptions: {
     ignoreProjen: false,
     workflowOptions: {
@@ -49,6 +58,10 @@ const project = new AwsCdkConstructLibrary({
     'cdn',
     'web',
   ],
+});
+
+project.package.addField('resolutions', {
+  'jest-environment-jsdom': '27.3.1',
 });
 
 project.synth();
