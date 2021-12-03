@@ -37,7 +37,7 @@
   "devDependencies": {
     "@aws-cdk/assert": "^1.95.2",
     "@types/jest": "^27.0.3",
-    "@types/node": "^12.7.0",
+    "@types/node": "^14.17.0",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "@vue/cli": "^4.5.15",
@@ -90,9 +90,6 @@
     "vuejs",
     "web"
   ],
-  "engines": {
-    "node": ">= 12.7.0"
-  },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "publishConfig": {
