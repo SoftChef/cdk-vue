@@ -1,20 +1,17 @@
-const { AwsCdkConstructLibrary, NpmAccess } = require('projen');
+const { awscdk } = require('projen');
 
 const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
-const project = new AwsCdkConstructLibrary({
+const project = new awscdk.AwsCdkConstructLibrary({
   author: 'SoftChef',
   authorEmail: 'poke@softchef.com',
   authorUrl: 'https://www.softchef.com',
   authorOrganization: true,
-  npmAccess: NpmAccess.PUBLIC,
-  cdkVersion: '1.95.2',
+  cdkVersion: '1.73.0',
   defaultReleaseBranch: 'main',
   name: '@softchef/cdk-vue',
   description: 'Auto deploy website with VueJs to S3 bucket and CloudFront distribution.',
   repositoryUrl: 'https://github.com/SoftChef/cdk-vue.git',
-  // minNodeVersion: '12.7.0',
-  // workflowNodeVersion: '12.13.0',
   cdkDependencies: [
     '@aws-cdk/aws-certificatemanager',
     '@aws-cdk/aws-cloudfront',
