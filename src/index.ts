@@ -168,7 +168,6 @@ export class VueDeployment extends cdk.Construct {
       properties: {
         bucketName: this.bucket.bucketName,
         configJsKey: props.configJsKey ?? 'config.js',
-        uploadedAt: Date.now(),
         ...(props.config ?? {}),
       },
       removalPolicy: cdk.RemovalPolicy.DESTROY,
