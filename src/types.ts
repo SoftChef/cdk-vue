@@ -17,5 +17,5 @@ export interface VueCliBuildProps {
   readonly forceDockerBundling?: boolean;
 
   // Specify docker node version
-  readonly dockerNodeVersion?: string | 'lts' | 'latest';
+  readonly nodeImage?: string | 'public.ecr.aws/bitnami/node';
 }

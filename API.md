@@ -157,16 +157,6 @@ public readonly configJsKey: string;
 
 ---
 
-##### `dockerNodeVersion`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.dockerNodeVersion"></a>
-
-```typescript
-public readonly dockerNodeVersion: string;
-```
-
-- *Type:* `string`
-
----
-
 ##### `domainNames`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.domainNames"></a>
 
 ```typescript
@@ -211,6 +201,16 @@ public readonly forceDockerBundling: boolean;
 
 ```typescript
 public readonly indexHtml: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `nodeImage`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.nodeImage"></a>
+
+```typescript
+public readonly nodeImage: string;
 ```
 
 - *Type:* `string`
