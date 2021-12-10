@@ -157,10 +157,10 @@ public readonly configJsKey: string;
 
 ---
 
-##### `dockerNodeVersion`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.dockerNodeVersion"></a>
+##### `dockerImage`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.dockerImage"></a>
 
 ```typescript
-public readonly dockerNodeVersion: string;
+public readonly dockerImage: string;
 ```
 
 - *Type:* `string`
