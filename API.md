@@ -157,6 +157,16 @@ public readonly configJsKey: string;
 
 ---
 
+##### `distribution`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.distribution"></a>
+
+```typescript
+public readonly distribution: Distribution;
+```
+
+- *Type:* [`@aws-cdk/aws-cloudfront.Distribution`](#@aws-cdk/aws-cloudfront.Distribution)
+
+---
+
 ##### `domainNames`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.domainNames"></a>
 
 ```typescript
@@ -214,6 +224,26 @@ public readonly nodeImage: string;
 ```
 
 - *Type:* `string`
+
+---
+
+##### `prune`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.prune"></a>
+
+```typescript
+public readonly prune: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
+##### `retainOnDelete`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.retainOnDelete"></a>
+
+```typescript
+public readonly retainOnDelete: boolean;
+```
+
+- *Type:* `boolean`
 
 ---
 
