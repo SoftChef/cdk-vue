@@ -26,6 +26,15 @@ export interface VueDeploymentProps {
   // S3 bucket prefix
   readonly websiteDirectoryPrefix?: string;
 
+  // Prune S3 bucket files
+  readonly prune?: boolean;
+
+  // Retain S3 bucket files on delete stack
+  readonly retainOnDelete?: boolean;
+
+  // CloudFront distribution
+  readonly distribution?: cloudfront.Distribution;
+
   // CloudFront certificate
   readonly certificate?: acm.ICertificate;
 
@@ -78,8 +87,12 @@ export class VueDeployment extends cdk.Construct {
     super(scope, id);
     this.websiteDirectoryPrefix = props.websiteDirectoryPrefix?.replace(/^\//, '') ?? '';
     this.bucket = this.createOrGetBucket(scope, props);
+    if (props.distribution) {
+      this.cloudfrontDistribution = this.createCloudfrontDistribution(props);
+    } else {
+      this.cloudfrontDistribution = props.distribution!;
+    }
     this.bucketDeployment = this.createBucketDeployment(props);
-    this.cloudfrontDistribution = this.createCloudfrontDistribution(props);
     this.uploadConfigResource = this.createUploadConfigResource(props);
   }
 
@@ -121,6 +134,9 @@ export class VueDeployment extends cdk.Construct {
       ],
       destinationBucket: this.bucket,
       destinationKeyPrefix: this.websiteDirectoryPrefix,
+      prune: props.prune ?? false,
+      retainOnDelete: props.retainOnDelete ?? false,
+      distribution: this.cloudfrontDistribution,
     });
   }
 
