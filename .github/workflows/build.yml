@@ -82,8 +82,8 @@ jobs:
           path: dist
       - name: Extract npm tarball
         run: |-
-          tar -xzf dist/*.tgz --strip-components=1
-          rm -fr dist/
+          tar -xzf dist/js/*.tgz --strip-components=1
+          rm -fr dist/js
       - name: Create js artifact
         run: >-
           jsii_version=$(node -p
