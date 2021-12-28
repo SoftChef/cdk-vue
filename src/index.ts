@@ -26,11 +26,14 @@ export interface VueDeploymentProps {
   // S3 bucket prefix
   readonly websiteDirectoryPrefix?: string;
 
-  // Prune S3 bucket files
+  // Prune S3 bucket files, default false
   readonly prune?: boolean;
 
-  // Retain S3 bucket files on delete stack
+  // Retain S3 bucket files on delete stack, default false
   readonly retainOnDelete?: boolean;
+
+  // Enable CloudFront distribution, default: true
+  readonly enableDistribution?: boolean;
 
   // CloudFront distribution
   readonly distribution?: cloudfront.Distribution;
@@ -44,6 +47,7 @@ export interface VueDeploymentProps {
   // CloudFront distribution defaultRootObject
   readonly indexHtml?: string;
 
+  // Enable IPv6, default: true
   readonly enableIpv6?: boolean;
 
   readonly environment?: {
@@ -87,10 +91,12 @@ export class VueDeployment extends cdk.Construct {
     super(scope, id);
     this.websiteDirectoryPrefix = props.websiteDirectoryPrefix?.replace(/^\//, '') ?? '';
     this.bucket = this.createOrGetBucket(scope, props);
-    if (props.distribution) {
-      this.cloudfrontDistribution = this.createCloudfrontDistribution(props);
-    } else {
-      this.cloudfrontDistribution = props.distribution!;
+    if (!!props.enableDistribution) {
+      if (props.distribution) {
+        this.cloudfrontDistribution = this.createCloudfrontDistribution(props);
+      } else {
+        this.cloudfrontDistribution = props.distribution!;
+      }
     }
     this.bucketDeployment = this.createBucketDeployment(props);
     this.uploadConfigResource = this.createUploadConfigResource(props);

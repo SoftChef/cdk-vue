@@ -27,7 +27,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'esbuild',
   ],
   depsUpgradeOptions: {
-    ignoreProjen: false,
+    ignoreProjen: true,
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
       secret: AUTOMATION_TOKEN,
