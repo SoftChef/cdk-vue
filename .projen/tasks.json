@@ -122,31 +122,7 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "mkdir -p dist/js"
-        },
-        {
-          "exec": "mv $(npm pack) dist/js/"
-        }
-      ]
-    },
-    "package-all": {
-      "name": "package-all",
-      "description": "Packages artifacts for all target languages",
-      "steps": [
-        {
-          "spawn": "package:js"
-        }
-      ]
-    },
-    "package:js": {
-      "name": "package:js",
-      "description": "Create js language bindings",
-      "steps": [
-        {
-          "exec": "jsii_version=$(node -p \"JSON.parse(fs.readFileSync('.jsii')).jsiiVersion.split(' ')[0]\")"
-        },
-        {
-          "exec": "npx jsii-pacmak@$jsii_version -v --outdir $PWD/dist --target js"
+          "exec": "jsii-pacmak"
         }
       ]
     },
@@ -240,25 +216,58 @@
       },
       "steps": [
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen'"
         },
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor"
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen'"
         },
         {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor"
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen'"
         },
         {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor"
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen'"
         },
         {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor"
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen'"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade"
+          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @vue/cli esbuild eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii jsii-diff jsii-docgen jsii-pacmak json-schema npm-check-updates standard-version ts-jest typescript @aws-cdk/aws-certificatemanager @aws-cdk/aws-cloudfront-origins @aws-cdk/aws-cloudfront @aws-cdk/aws-iam @aws-cdk/aws-lambda-nodejs @aws-cdk/aws-s3-deployment @aws-cdk/aws-s3 @aws-cdk/core constructs @aws-cdk/aws-certificatemanager @aws-cdk/aws-cloudfront-origins @aws-cdk/aws-cloudfront @aws-cdk/aws-iam @aws-cdk/aws-lambda-nodejs @aws-cdk/aws-s3-deployment @aws-cdk/aws-s3 @aws-cdk/core @aws-cdk/assert"
+        },
+        {
+          "exec": "npx projen"
+        }
+      ]
+    },
+    "upgrade-projen": {
+      "name": "upgrade-projen",
+      "description": "upgrade projen",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen'"
+        },
+        {
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen'"
+        },
+        {
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen'"
+        },
+        {
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen'"
+        },
+        {
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen'"
+        },
+        {
+          "exec": "yarn install --check-files"
+        },
+        {
+          "exec": "yarn upgrade projen"
         },
         {
           "exec": "npx projen"
