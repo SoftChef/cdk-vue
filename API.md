@@ -177,6 +177,16 @@ public readonly domainNames: string[];
 
 ---
 
+##### `enableDistribution`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.enableDistribution"></a>
+
+```typescript
+public readonly enableDistribution: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
 ##### `enableIpv6`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.enableIpv6"></a>
 
 ```typescript
