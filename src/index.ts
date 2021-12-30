@@ -91,11 +91,11 @@ export class VueDeployment extends cdk.Construct {
     super(scope, id);
     this.websiteDirectoryPrefix = props.websiteDirectoryPrefix?.replace(/^\//, '') ?? '';
     this.bucket = this.createOrGetBucket(scope, props);
-    if (!!props.enableDistribution) {
+    if (props.enableDistribution !== false) {
       if (props.distribution) {
-        this.cloudfrontDistribution = this.createCloudfrontDistribution(props);
-      } else {
         this.cloudfrontDistribution = props.distribution!;
+      } else {
+        this.cloudfrontDistribution = this.createCloudfrontDistribution(props);
       }
     }
     this.bucketDeployment = this.createBucketDeployment(props);
