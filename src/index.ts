@@ -47,6 +47,8 @@ export interface VueDeploymentProps {
   // CloudFront distribution defaultRootObject
   readonly indexHtml?: string;
 
+  readonly distributionComment?: string;
+
   // Enable IPv6, default: true
   readonly enableIpv6?: boolean;
 
@@ -223,6 +225,7 @@ export class VueDeployment extends cdk.Construct {
           responsePagePath: `/${indexHtml}`,
         },
       ],
+      comment: props.distributionComment ?? '',
     });
   }
 }

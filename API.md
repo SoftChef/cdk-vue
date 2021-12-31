@@ -167,6 +167,16 @@ public readonly distribution: Distribution;
 
 ---
 
+##### `distributionComment`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.distributionComment"></a>
+
+```typescript
+public readonly distributionComment: string;
+```
+
+- *Type:* `string`
+
+---
+
 ##### `domainNames`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.domainNames"></a>
 
 ```typescript
