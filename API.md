@@ -237,6 +237,16 @@ public readonly indexHtml: string;
 
 ---
 
+##### `memoryLimit`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.memoryLimit"></a>
+
+```typescript
+public readonly memoryLimit: number;
+```
+
+- *Type:* `number`
+
+---
+
 ##### `nodeImage`<sup>Optional</sup> <a name="@softchef/cdk-vue.VueDeploymentProps.property.nodeImage"></a>
 
 ```typescript
