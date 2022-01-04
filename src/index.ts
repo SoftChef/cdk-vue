@@ -26,6 +26,9 @@ export interface VueDeploymentProps {
   // S3 bucket prefix
   readonly websiteDirectoryPrefix?: string;
 
+  // Bucket Deployment memoryLimit
+  readonly memoryLimit?: number;
+
   // Prune S3 bucket files, default false
   readonly prune?: boolean;
 
@@ -142,6 +145,7 @@ export class VueDeployment extends cdk.Construct {
       ],
       destinationBucket: this.bucket,
       destinationKeyPrefix: this.websiteDirectoryPrefix,
+      memoryLimit: props.memoryLimit,
       prune: props.prune ?? false,
       retainOnDelete: props.retainOnDelete ?? false,
       distribution: this.cloudfrontDistribution,
