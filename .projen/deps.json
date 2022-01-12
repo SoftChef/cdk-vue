@@ -97,42 +97,42 @@
     },
     {
       "name": "@aws-cdk/aws-certificatemanager",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-cloudfront-origins",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-cloudfront",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-iam",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-s3-deployment",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-s3",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "peer"
     },
     {
@@ -142,47 +142,52 @@
     },
     {
       "name": "@aws-cdk/aws-certificatemanager",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-cloudfront-origins",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-cloudfront",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-iam",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-s3-deployment",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-s3",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.73.0",
+      "version": "1.138.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/assert",
-      "version": "^1.73.0",
+      "version": "1.138.0",
+      "type": "test"
+    },
+    {
+      "name": "@aws-cdk/assertions",
+      "version": "1.138.0",
       "type": "test"
     }
   ],
