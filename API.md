@@ -14,7 +14,7 @@ new VueDeployment(scope: Construct, id: string, props: VueDeploymentProps)
 
 ##### `scope`<sup>Required</sup> <a name="@softchef/cdk-vue.VueDeployment.parameter.scope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -40,7 +40,7 @@ new VueDeployment(scope: Construct, id: string, props: VueDeploymentProps)
 public readonly bucket: Bucket;
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.Bucket`](#@aws-cdk/aws-s3.Bucket)
+- *Type:* [`aws-cdk-lib.aws_s3.Bucket`](#aws-cdk-lib.aws_s3.Bucket)
 
 ---
 
@@ -50,7 +50,7 @@ public readonly bucket: Bucket;
 public readonly bucketDeployment: BucketDeployment;
 ```
 
-- *Type:* [`@aws-cdk/aws-s3-deployment.BucketDeployment`](#@aws-cdk/aws-s3-deployment.BucketDeployment)
+- *Type:* [`aws-cdk-lib.aws_s3_deployment.BucketDeployment`](#aws-cdk-lib.aws_s3_deployment.BucketDeployment)
 
 ---
 
@@ -60,7 +60,7 @@ public readonly bucketDeployment: BucketDeployment;
 public readonly cloudfrontDistribution: Distribution;
 ```
 
-- *Type:* [`@aws-cdk/aws-cloudfront.Distribution`](#@aws-cdk/aws-cloudfront.Distribution)
+- *Type:* [`aws-cdk-lib.aws_cloudfront.Distribution`](#aws-cdk-lib.aws_cloudfront.Distribution)
 
 ---
 
@@ -70,7 +70,7 @@ public readonly cloudfrontDistribution: Distribution;
 public readonly uploadConfigResource: CustomResource;
 ```
 
-- *Type:* [`@aws-cdk/core.CustomResource`](#@aws-cdk/core.CustomResource)
+- *Type:* [`aws-cdk-lib.CustomResource`](#aws-cdk-lib.CustomResource)
 
 ---
 
@@ -103,7 +103,7 @@ public readonly source: string;
 public readonly bucket: Bucket;
 ```
 
-- *Type:* [`@aws-cdk/aws-s3.Bucket`](#@aws-cdk/aws-s3.Bucket)
+- *Type:* [`aws-cdk-lib.aws_s3.Bucket`](#aws-cdk-lib.aws_s3.Bucket)
 
 ---
 
@@ -133,7 +133,7 @@ public readonly bundlingArguments: string;
 public readonly certificate: ICertificate;
 ```
 
-- *Type:* [`@aws-cdk/aws-certificatemanager.ICertificate`](#@aws-cdk/aws-certificatemanager.ICertificate)
+- *Type:* [`aws-cdk-lib.aws_certificatemanager.ICertificate`](#aws-cdk-lib.aws_certificatemanager.ICertificate)
 
 ---
 
@@ -163,7 +163,7 @@ public readonly configJsKey: string;
 public readonly distribution: Distribution;
 ```
 
-- *Type:* [`@aws-cdk/aws-cloudfront.Distribution`](#@aws-cdk/aws-cloudfront.Distribution)
+- *Type:* [`aws-cdk-lib.aws_cloudfront.Distribution`](#aws-cdk-lib.aws_cloudfront.Distribution)
 
 ---
 

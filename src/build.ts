@@ -1,16 +1,30 @@
 import * as os from 'os';
 import * as path from 'path';
-import * as s3Deploy from '@aws-cdk/aws-s3-deployment';
-import * as cdk from '@aws-cdk/core';
-import { VueCliBuildProps } from './types';
-import { getNpxVersion, getVueCliVersion, exec } from './util';
+import {
+  ISource,
+  Source,
+} from 'aws-cdk-lib/aws-s3-deployment';
+import {
+  AssetStaging,
+  BundlingOptions,
+  DockerImage,
+  ILocalBundling,
+} from 'aws-cdk-lib/core';
+import {
+  VueCliBuildProps,
+} from './types';
+import {
+  getNpxVersion,
+  getVueCliVersion,
+  exec,
+} from './util';
 
 const NPX_MAJOR_VERSION = '6';
 
-export class VueCliBundling implements cdk.BundlingOptions {
+export class VueCliBundling implements BundlingOptions {
 
-  public static bundling(options: VueCliBuildProps): s3Deploy.ISource {
-    return s3Deploy.Source.asset(
+  public static bundling(options: VueCliBuildProps): ISource {
+    return Source.asset(
       options.source,
       {
         bundling: new VueCliBundling(options),
@@ -20,7 +34,7 @@ export class VueCliBundling implements cdk.BundlingOptions {
 
   private static runsLocally?: boolean | true;
 
-  public readonly image: cdk.DockerImage;
+  public readonly image: DockerImage;
 
   public readonly command?: string[] | undefined;
 
@@ -28,13 +42,13 @@ export class VueCliBundling implements cdk.BundlingOptions {
 
   public readonly bundlingArguments?: string | '';
 
-  public readonly local?: cdk.ILocalBundling | undefined;
+  public readonly local?: ILocalBundling | undefined;
 
   constructor(props: VueCliBuildProps) {
     VueCliBundling.runsLocally = (getNpxVersion()?.startsWith(NPX_MAJOR_VERSION) && getVueCliVersion()?.startsWith('@vue/cli')) ?? false;
     const bundlingArguments = props.bundlingArguments ?? '';
-    const bundlingCommand = this.createBundlingCommand(cdk.AssetStaging.BUNDLING_OUTPUT_DIR, bundlingArguments);
-    this.image = cdk.DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
+    const bundlingCommand = this.createBundlingCommand(AssetStaging.BUNDLING_OUTPUT_DIR, bundlingArguments);
+    this.image = DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
     this.command = ['bash', '-c', bundlingCommand];
     this.environment = props.environment;
     if (!props.forceDockerBundling) {
