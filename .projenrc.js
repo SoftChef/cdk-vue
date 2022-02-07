@@ -2,16 +2,19 @@ const { awscdk } = require('projen');
 
 const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
+const PROJECT_NAME = '@softchef/cdk-vue';
+const PROJECT_DESCRIPTION = 'Auto deploy website with VueJs to S3 bucket and CloudFront distribution.';
+
 const project = new awscdk.AwsCdkConstructLibrary({
-  author: 'SoftChef',
+  authorName: 'SoftChef',
   authorEmail: 'poke@softchef.com',
   authorUrl: 'https://www.softchef.com',
   authorOrganization: true,
   cdkVersion: '1.73.0',
-  defaultReleaseBranch: 'main',
-  name: '@softchef/cdk-vue',
-  description: 'Auto deploy website with VueJs to S3 bucket and CloudFront distribution.',
+  name: PROJECT_NAME,
+  description: PROJECT_DESCRIPTION,
   repositoryUrl: 'https://github.com/SoftChef/cdk-vue.git',
+  defaultReleaseBranch: 'main',
   cdkDependencies: [
     '@aws-cdk/aws-certificatemanager',
     '@aws-cdk/aws-cloudfront',
@@ -27,7 +30,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'esbuild',
   ],
   depsUpgradeOptions: {
-    ignoreProjen: true,
+    ignoreProjen: false,
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
       secret: AUTOMATION_TOKEN,
@@ -51,5 +54,14 @@ const project = new awscdk.AwsCdkConstructLibrary({
 project.package.addField('resolutions', {
   'jest-environment-jsdom': '27.3.1',
 });
+
+const commonExclude = [
+  'cdk.out',
+  'cdk.context.json',
+  'yarn-error.log',
+];
+
+project.npmignore.exclude(...commonExclude);
+project.gitignore.exclude(...commonExclude);
 
 project.synth();
