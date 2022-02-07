@@ -1,6 +1,4 @@
-const { awscdk } = require('projen');
-
-const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
+const { awscdk, AUTOMATION_TOKEN } = require('projen');
 
 const PROJECT_NAME = '@softchef/cdk-vue';
 const PROJECT_DESCRIPTION = 'Auto deploy website with VueJs to S3 bucket and CloudFront distribution.';
