@@ -1,15 +1,15 @@
 import * as os from 'os';
 import * as path from 'path';
 import {
-  ISource,
-  Source,
-} from 'aws-cdk-lib/aws-s3-deployment';
-import {
   AssetStaging,
   BundlingOptions,
   DockerImage,
   ILocalBundling,
 } from 'aws-cdk-lib';
+import {
+  ISource,
+  Source,
+} from 'aws-cdk-lib/aws-s3-deployment';
 import {
   VueCliBuildProps,
 } from './types';
