@@ -1,6 +1,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import {
+  CustomResource,
+  Names,
+  RemovalPolicy,
+} from 'aws-cdk-lib';
+import {
   ICertificate,
 } from 'aws-cdk-lib/aws-certificatemanager';
 import {
@@ -27,11 +32,6 @@ import {
 import {
   BucketDeployment,
 } from 'aws-cdk-lib/aws-s3-deployment';
-import {
-  CustomResource,
-  Names,
-  RemovalPolicy,
-} from 'aws-cdk-lib/core';
 import {
   Construct,
 } from 'constructs';
