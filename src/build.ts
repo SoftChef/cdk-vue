@@ -9,7 +9,7 @@ import {
   BundlingOptions,
   DockerImage,
   ILocalBundling,
-} from 'aws-cdk-lib/core';
+} from 'aws-cdk-lib';
 import {
   VueCliBuildProps,
 } from './types';
