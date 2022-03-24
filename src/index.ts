@@ -1,13 +1,40 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as acm from '@aws-cdk/aws-certificatemanager';
-import * as cloudfront from '@aws-cdk/aws-cloudfront';
-import * as cloudfrontOrigins from '@aws-cdk/aws-cloudfront-origins';
-import * as iam from '@aws-cdk/aws-iam';
-import * as lambda from '@aws-cdk/aws-lambda-nodejs';
-import * as s3 from '@aws-cdk/aws-s3';
-import * as s3Deploy from '@aws-cdk/aws-s3-deployment';
-import * as cdk from '@aws-cdk/core';
+import {
+  CustomResource,
+  Names,
+  RemovalPolicy,
+} from 'aws-cdk-lib';
+import {
+  ICertificate,
+} from 'aws-cdk-lib/aws-certificatemanager';
+import {
+  Distribution,
+  ViewerProtocolPolicy,
+} from 'aws-cdk-lib/aws-cloudfront';
+import {
+  S3Origin,
+} from 'aws-cdk-lib/aws-cloudfront-origins';
+import {
+  CompositePrincipal,
+  Effect,
+  PolicyStatement,
+  Role,
+  ServicePrincipal,
+} from 'aws-cdk-lib/aws-iam';
+import {
+  NodejsFunction,
+} from 'aws-cdk-lib/aws-lambda-nodejs';
+import {
+  Bucket,
+  HttpMethods,
+} from 'aws-cdk-lib/aws-s3';
+import {
+  BucketDeployment,
+} from 'aws-cdk-lib/aws-s3-deployment';
+import {
+  Construct,
+} from 'constructs';
 import {
   VueCliBundling,
 } from './build';
@@ -18,7 +45,7 @@ export interface VueDeploymentProps {
   readonly source: string;
 
   // Use target bucket or create new bucket
-  readonly bucket?: s3.Bucket;
+  readonly bucket?: Bucket;
 
   // Specify S3 bucket
   readonly bucketName?: string;
@@ -39,10 +66,10 @@ export interface VueDeploymentProps {
   readonly enableDistribution?: boolean;
 
   // CloudFront distribution
-  readonly distribution?: cloudfront.Distribution;
+  readonly distribution?: Distribution;
 
   // CloudFront certificate
-  readonly certificate?: acm.ICertificate;
+  readonly certificate?: ICertificate;
 
   // CloudFront domain names
   readonly domainNames?: string[];
@@ -80,19 +107,19 @@ export interface VueDeploymentProps {
 
 }
 
-export class VueDeployment extends cdk.Construct {
+export class VueDeployment extends Construct {
 
-  public readonly bucket: s3.Bucket;
+  public readonly bucket: Bucket;
 
-  public readonly bucketDeployment: s3Deploy.BucketDeployment;
+  public readonly bucketDeployment: BucketDeployment;
 
-  public readonly cloudfrontDistribution!: cloudfront.Distribution;
+  public readonly cloudfrontDistribution!: Distribution;
 
-  public readonly uploadConfigResource!: cdk.CustomResource;
+  public readonly uploadConfigResource!: CustomResource;
 
   private readonly websiteDirectoryPrefix: string;
 
-  constructor(scope: cdk.Construct, id: string, props: VueDeploymentProps) {
+  constructor(scope: Construct, id: string, props: VueDeploymentProps) {
     super(scope, id);
     this.websiteDirectoryPrefix = props.websiteDirectoryPrefix?.replace(/^\//, '') ?? '';
     this.bucket = this.createOrGetBucket(scope, props);
@@ -107,21 +134,21 @@ export class VueDeployment extends cdk.Construct {
     this.uploadConfigResource = this.createUploadConfigResource(props);
   }
 
-  private createOrGetBucket(scope: cdk.Construct, props: VueDeploymentProps): s3.Bucket {
-    let bucket: s3.Bucket;
+  private createOrGetBucket(scope: Construct, props: VueDeploymentProps): Bucket {
+    let bucket: Bucket;
     if (props.bucket) {
       bucket = props.bucket;
     } else {
-      bucket = new s3.Bucket(this, cdk.Names.nodeUniqueId(scope.node), {
+      bucket = new Bucket(this, Names.nodeUniqueId(scope.node), {
         bucketName: props.bucketName,
       });
       bucket.addCorsRule({
         allowedMethods: [
-          s3.HttpMethods.GET,
-          s3.HttpMethods.POST,
-          s3.HttpMethods.PUT,
-          s3.HttpMethods.HEAD,
-          s3.HttpMethods.DELETE,
+          HttpMethods.GET,
+          HttpMethods.POST,
+          HttpMethods.PUT,
+          HttpMethods.HEAD,
+          HttpMethods.DELETE,
         ],
         allowedOrigins: ['*'],
         allowedHeaders: ['*'],
@@ -130,7 +157,7 @@ export class VueDeployment extends cdk.Construct {
     return bucket;
   }
 
-  private createBucketDeployment(props: VueDeploymentProps): s3Deploy.BucketDeployment {
+  private createBucketDeployment(props: VueDeploymentProps): BucketDeployment {
     const s3SourceAsset = VueCliBundling.bundling({
       source: props.source,
       runsLocally: props.runsLocally ?? true,
@@ -139,7 +166,7 @@ export class VueDeployment extends cdk.Construct {
       bundlingArguments: props.bundlingArguments,
       environment: props.environment,
     });
-    return new s3Deploy.BucketDeployment(this, 'DeployWebsite', {
+    return new BucketDeployment(this, 'DeployWebsite', {
       sources: [
         s3SourceAsset,
       ],
@@ -152,15 +179,15 @@ export class VueDeployment extends cdk.Construct {
     });
   }
 
-  private createUploadConfigResource(props: VueDeploymentProps): cdk.CustomResource {
-    const updateConfigFunctionRole = new iam.Role(this, 'UpdateConfigFunctionRole', {
-      assumedBy: new iam.CompositePrincipal(
-        new iam.ServicePrincipal('lambda.amazonaws.com'),
+  private createUploadConfigResource(props: VueDeploymentProps): CustomResource {
+    const updateConfigFunctionRole = new Role(this, 'UpdateConfigFunctionRole', {
+      assumedBy: new CompositePrincipal(
+        new ServicePrincipal('lambda.amazonaws.com'),
       ),
     });
     updateConfigFunctionRole.addToPolicy(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
+      new PolicyStatement({
+        effect: Effect.ALLOW,
         actions: [
           's3:PutObject',
           's3:DeleteObject',
@@ -171,8 +198,8 @@ export class VueDeployment extends cdk.Construct {
       }),
     );
     updateConfigFunctionRole.addToPolicy(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
+      new PolicyStatement({
+        effect: Effect.ALLOW,
         actions: [
           'Logs:CreateLogGroup',
           'Logs:CreateLogStream',
@@ -181,7 +208,7 @@ export class VueDeployment extends cdk.Construct {
         resources: ['*'],
       }),
     );
-    const uploadConfigFunction = new lambda.NodejsFunction(this, 'UploadConfigFunction', {
+    const uploadConfigFunction = new NodejsFunction(this, 'UploadConfigFunction', {
       entry: path.resolve(__dirname, '../functions/upload-config/app.js'),
       environment: {
         CONFIG_JS_STUB: fs.readFileSync(
@@ -190,7 +217,7 @@ export class VueDeployment extends cdk.Construct {
       },
       role: updateConfigFunctionRole,
     });
-    const uploadConfig = new cdk.CustomResource(this, 'UploadConfig', {
+    const uploadConfig = new CustomResource(this, 'UploadConfig', {
       serviceToken: uploadConfigFunction.functionArn,
       pascalCaseProperties: false,
       properties: {
@@ -198,23 +225,23 @@ export class VueDeployment extends cdk.Construct {
         configJsKey: props.configJsKey ?? 'config.js',
         ...(props.config ?? {}),
       },
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      removalPolicy: RemovalPolicy.DESTROY,
     });
     uploadConfig.node.addDependency(this.bucketDeployment);
     return uploadConfig;
   }
 
-  private createCloudfrontDistribution(props: VueDeploymentProps): cloudfront.Distribution {
+  private createCloudfrontDistribution(props: VueDeploymentProps): Distribution {
     const indexHtml = props.indexHtml ?? 'index.html';
-    return new cloudfront.Distribution(this, 'WebsiteDistribution', {
+    return new Distribution(this, 'WebsiteDistribution', {
       certificate: props.certificate,
       domainNames: props.domainNames,
       defaultRootObject: indexHtml,
       defaultBehavior: {
-        origin: new cloudfrontOrigins.S3Origin(this.bucket, {
+        origin: new S3Origin(this.bucket, {
           originPath: `/${this.websiteDirectoryPrefix}`,
         }),
-        viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
       enableIpv6: props.enableIpv6,
       errorResponses: [

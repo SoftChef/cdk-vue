@@ -1,7 +1,6 @@
 import * as os from 'os';
-import '@aws-cdk/assert/jest';
-// import * as s3 from '@aws-cdk/aws-s3';
-// import * as cdk from '@aws-cdk/core';
+// import { App } from 'aws-cdk-lib';
+// import { Template } from 'aws-cdk-lib/assertions';
 // import { VueDeployment } from '../src/index';
 import * as util from '../src/util';
 

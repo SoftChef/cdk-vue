@@ -22,12 +22,12 @@
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
     "release": "npx projen release",
+    "release:cdkv1": "npx projen release:cdkv1",
     "test": "npx projen test",
     "test:update": "npx projen test:update",
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
-    "upgrade-projen": "npx projen upgrade-projen",
     "watch": "npx projen watch",
     "projen": "npx projen"
   },
@@ -38,12 +38,13 @@
     "organization": true
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.73.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^12",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "@vue/cli": "^4.5.17",
+    "aws-cdk-lib": "2.1.0",
+    "constructs": "10.0.5",
     "esbuild": "^0.14.27",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.6",
@@ -63,25 +64,8 @@
     "typescript": "^4.6.2"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-certificatemanager": "^1.73.0",
-    "@aws-cdk/aws-cloudfront": "^1.73.0",
-    "@aws-cdk/aws-cloudfront-origins": "^1.73.0",
-    "@aws-cdk/aws-iam": "^1.73.0",
-    "@aws-cdk/aws-lambda-nodejs": "^1.73.0",
-    "@aws-cdk/aws-s3": "^1.73.0",
-    "@aws-cdk/aws-s3-deployment": "^1.73.0",
-    "@aws-cdk/core": "^1.73.0",
-    "constructs": "^3.2.27"
-  },
-  "dependencies": {
-    "@aws-cdk/aws-certificatemanager": "^1.73.0",
-    "@aws-cdk/aws-cloudfront": "^1.73.0",
-    "@aws-cdk/aws-cloudfront-origins": "^1.73.0",
-    "@aws-cdk/aws-iam": "^1.73.0",
-    "@aws-cdk/aws-lambda-nodejs": "^1.73.0",
-    "@aws-cdk/aws-s3": "^1.73.0",
-    "@aws-cdk/aws-s3-deployment": "^1.73.0",
-    "@aws-cdk/core": "^1.73.0"
+    "aws-cdk-lib": "^2.1.0",
+    "constructs": "^10.0.5"
   },
   "keywords": [
     "aws",
