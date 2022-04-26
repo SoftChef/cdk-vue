@@ -1,3 +1,6 @@
+import {
+  SpawnSyncOptions,
+} from 'child_process';
 import * as os from 'os';
 import * as path from 'path';
 import {
@@ -47,14 +50,14 @@ export class VueCliBundling implements BundlingOptions {
   constructor(props: VueCliBuildProps) {
     VueCliBundling.runsLocally = (getNpxVersion()?.startsWith(NPX_MAJOR_VERSION) && getVueCliVersion()?.startsWith('@vue/cli')) ?? false;
     const bundlingArguments = props.bundlingArguments ?? '';
-    const bundlingCommand = this.createBundlingCommand(AssetStaging.BUNDLING_OUTPUT_DIR, bundlingArguments);
+    const bundlingCommand = this.createDockerBundlingCommand(AssetStaging.BUNDLING_OUTPUT_DIR, bundlingArguments);
     this.image = VueCliBundling.runsLocally ? DockerImage.fromRegistry('dummy') : DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
     this.command = ['bash', '-c', bundlingCommand];
     this.environment = props.environment;
     if (!props.forceDockerBundling) {
       const osPlatform = os.platform();
       const createLocalCommand = (outputDir: string) => {
-        return this.createBundlingCommand(outputDir, bundlingArguments, osPlatform);
+        return this.createLocalBundlingCommand(outputDir, bundlingArguments, osPlatform);
       };
       this.local = {
         tryBundle(outputDir: string) {
@@ -63,25 +66,36 @@ export class VueCliBundling implements BundlingOptions {
             return false;
           }
           try {
-            exec(
-              osPlatform === 'win32' ? 'cmd' : 'bash',
-              [
-                osPlatform === 'win32' ? '/c' : '-c',
-                createLocalCommand(outputDir),
-              ],
-              {
-                env: {
-                  ...process.env,
-                  ...props.environment,
-                },
-                stdio: [
-                  'ignore',
-                  process.stderr,
-                  'inherit',
-                ],
-                cwd: path.resolve(props.source),
-                windowsVerbatimArguments: osPlatform === 'win32',
+            const cmd = osPlatform === 'win32' ? 'cmd' : 'bash';
+            const c = osPlatform === 'win32' ? '/c' : '-c';
+            const spawnSyncOptions: SpawnSyncOptions = {
+              env: {
+                ...process.env,
+                ...props.environment,
               },
+              stdio: [
+                'ignore',
+                process.stderr,
+                'inherit',
+              ],
+              cwd: path.resolve(props.source),
+              windowsVerbatimArguments: osPlatform === 'win32',
+            };
+            exec(
+              cmd,
+              [
+                c,
+                'npm', 'install',
+              ],
+              spawnSyncOptions,
+            );
+            exec(
+              cmd,
+              [
+                c,
+                ...createLocalCommand(outputDir),
+              ],
+              spawnSyncOptions,
             );
           } catch (error) {
             return false;
@@ -92,11 +106,11 @@ export class VueCliBundling implements BundlingOptions {
     }
   }
 
-  private createBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string {
-    const npx = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
+  private createDockerBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string {
+    const npx: string = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
     const vueCliServeBuildCommand: string = [
       npx,
-      'yarn',
+      'npm',
       'install',
       ';',
       npx,
@@ -107,6 +121,19 @@ export class VueCliBundling implements BundlingOptions {
       '--no-clean',
       `--dest ${outputDir}`,
     ].join(' ');
+    return vueCliServeBuildCommand;
+  }
+  private createLocalBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string[] {
+    const npx: string = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
+    const vueCliServeBuildCommand: string[] = [
+      npx,
+      'vue-cli-service',
+      'build',
+      bundlingArguments,
+      '--no-install',
+      '--no-clean',
+      `--dest ${outputDir}`,
+    ];
     return vueCliServeBuildCommand;
   }
 }
