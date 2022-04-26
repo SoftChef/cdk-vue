@@ -2135,9 +2135,9 @@ acorn@^7.1.1:
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
 acorn@^8.2.4, acorn@^8.7.0:
-  version "8.7.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.0.tgz#90951fde0f8f09df93549481e5fc141445b791cf"
-  integrity sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==
+  version "8.7.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.1.tgz#0197122c843d1bf6d0a5e83220a788f278f63c30"
+  integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
 
 add-stream@^1.0.0:
   version "1.0.0"
@@ -4035,9 +4035,9 @@ ejs@^2.7.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.4.118:
-  version "1.4.120"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.120.tgz#77986d449261913b47b9a532c4f452e333be0e49"
-  integrity sha512-H3ksXiGhoYVQCmoMT0JMN07kEDBzc6TSv1OSp7UUPxNiSvQl7NeQCyZiMZhLEmNJ89C5FnD4Eoe1ytZnMQxxaw==
+  version "1.4.121"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.121.tgz#e2fa3b7bd592643c6b12ae6de2882550a29b7799"
+  integrity sha512-N7OXhMr1p2oa9EkOhmHpmOm43DHzs55dep2FF6M7y6px5QJBheqEE3nwwZ+xJowlff+AEmMOdg3ARYGB+0kzbA==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -8498,10 +8498,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.54.45:
-  version "0.54.45"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.54.45.tgz#7cd4f01f7d43b3e55a85872520fc3e360dc582a7"
-  integrity sha512-TrIAgkSumuXpZ2BmLD3TsytWjq08UI3R4N2WU4QqIMxMO7SaAULuwdRuHo5SygikN6gVmjp1euaSYuetPXWRRQ==
+projen@^0.54.46:
+  version "0.54.46"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.54.46.tgz#d16ee88890b6365ef27236d06396c955d9788790"
+  integrity sha512-cqngyu9awK9x0asrNvJjQYWvqjcg2BcoBoyyz1Ycu5zwlPd+QJsPQer5xXIOxunEeomeTc8zyOFwz4EoArf7RA==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
