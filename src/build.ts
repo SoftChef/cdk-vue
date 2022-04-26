@@ -48,7 +48,7 @@ export class VueCliBundling implements BundlingOptions {
     VueCliBundling.runsLocally = (getNpxVersion()?.startsWith(NPX_MAJOR_VERSION) && getVueCliVersion()?.startsWith('@vue/cli')) ?? false;
     const bundlingArguments = props.bundlingArguments ?? '';
     const bundlingCommand = this.createBundlingCommand(AssetStaging.BUNDLING_OUTPUT_DIR, bundlingArguments);
-    this.image = DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
+    this.image = VueCliBundling.runsLocally ? DockerImage.fromRegistry('dummy') : DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
     this.command = ['bash', '-c', bundlingCommand];
     this.environment = props.environment;
     if (!props.forceDockerBundling) {
