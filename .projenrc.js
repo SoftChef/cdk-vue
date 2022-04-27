@@ -13,6 +13,16 @@ const project = new awscdk.AwsCdkConstructLibrary({
   description: PROJECT_DESCRIPTION,
   repositoryUrl: 'https://github.com/SoftChef/cdk-vue.git',
   defaultReleaseBranch: 'main',
+  /**
+   * we default release the main branch(cdkv2) with major version 2.
+   */
+  majorVersion: 2,
+  releaseBranches: {
+    cdkv1: {
+      npmDistTag: 'cdkv1',
+      majorVersion: 1,
+    },
+  },
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/aws-certificatemanager',
