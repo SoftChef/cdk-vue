@@ -14,6 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   repositoryUrl: 'https://github.com/SoftChef/cdk-vue.git',
   defaultReleaseBranch: 'main',
   cdkDependencies: [
+    '@aws-cdk/core',
     '@aws-cdk/aws-certificatemanager',
     '@aws-cdk/aws-cloudfront',
     '@aws-cdk/aws-cloudfront-origins',
@@ -21,7 +22,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '@aws-cdk/aws-lambda-nodejs',
     '@aws-cdk/aws-s3',
     '@aws-cdk/aws-s3-deployment',
-    '@aws-cdk/core',
   ],
   devDeps: [
     '@vue/cli',
