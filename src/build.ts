@@ -85,7 +85,7 @@ export class VueCliBundling implements BundlingOptions {
               cmd,
               [
                 c,
-                'npm', 'install',
+                'npm install',
               ],
               spawnSyncOptions,
             );
@@ -93,7 +93,7 @@ export class VueCliBundling implements BundlingOptions {
               cmd,
               [
                 c,
-                ...createLocalCommand(outputDir),
+                createLocalCommand(outputDir),
               ],
               spawnSyncOptions,
             );
@@ -123,9 +123,9 @@ export class VueCliBundling implements BundlingOptions {
     ].join(' ');
     return vueCliServeBuildCommand;
   }
-  private createLocalBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string[] {
+  private createLocalBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string {
     const npx: string = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
-    const vueCliServeBuildCommand: string[] = [
+    const vueCliServeBuildCommand: string = [
       npx,
       'vue-cli-service',
       'build',
@@ -133,7 +133,7 @@ export class VueCliBundling implements BundlingOptions {
       '--no-install',
       '--no-clean',
       `--dest ${outputDir}`,
-    ];
+    ].join(' ');
     return vueCliServeBuildCommand;
   }
 }
