@@ -5896,9 +5896,9 @@ into-stream@^3.1.0:
     p-is-promise "^1.1.0"
 
 ip@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
-  integrity sha1-vd7XARQpCCjAoDnnLvJfWq7ENUo=
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.6.tgz#5a651a37644586e18b6ba3b48ca122bf56495f67"
+  integrity sha512-/dAvCivFs/VexXAtiAoMIqyhkhStNC9CPD0h1noonimOgB1xrCkexF2c5CjlqQ72GgMPjN6tiV+oreoPv3Ft1g==
 
 ipaddr.js@1.9.1:
   version "1.9.1"
@@ -8526,9 +8526,9 @@ progress@^2.0.3:
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
 projen@^0.56.2:
-  version "0.56.2"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.56.2.tgz#1d4d91abb6ce9dcbb1007491eb9dec0e17c61e82"
-  integrity sha512-c2xzaGCUCs5gYlxR1OI6nzT7wE9X88ZW3Gw2eZops/YBW0B278bDpLvzex3zeBgetW5mU9HJvQkBo2RWuuU5eA==
+  version "0.56.3"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.56.3.tgz#3ce01d2d905a3a64e814ad0f922d2ddf101f0379"
+  integrity sha512-XNqD1mYN32gUZ8THqDi8KAo/d24hphBkdj9EHDrQy9oe2mJnXvnZhle+Ql78BvfDOD9IgjaO5j/5ucTfqcjV3Q==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
