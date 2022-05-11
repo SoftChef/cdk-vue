@@ -48,10 +48,17 @@ export class VueCliBundling implements BundlingOptions {
   public readonly local?: ILocalBundling | undefined;
 
   constructor(props: VueCliBuildProps) {
-    VueCliBundling.runsLocally = (getNpxVersion()?.startsWith(NPX_MAJOR_VERSION) && getVueCliVersion()?.startsWith('@vue/cli')) ?? false;
+    if (props.runsLocally === false || props.forceDockerBundling === true) {
+      VueCliBundling.runsLocally = false;
+    } else {
+      VueCliBundling.runsLocally = (getNpxVersion()?.startsWith(NPX_MAJOR_VERSION) && getVueCliVersion()?.startsWith('@vue/cli')) ?? false;
+    }
     const bundlingArguments = props.bundlingArguments ?? '';
     const bundlingCommand = this.createDockerBundlingCommand(AssetStaging.BUNDLING_OUTPUT_DIR, bundlingArguments);
-    this.image = VueCliBundling.runsLocally ? DockerImage.fromRegistry('williamyeh/dummy') : DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
+    this.image = DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
+    if (VueCliBundling.runsLocally) {
+      this.image = DockerImage.fromRegistry('williamyeh/dummy');
+    }
     this.command = ['bash', '-c', bundlingCommand];
     this.environment = props.environment;
     if (!props.forceDockerBundling) {
@@ -67,7 +74,7 @@ export class VueCliBundling implements BundlingOptions {
           }
           try {
             const cmd = osPlatform === 'win32' ? 'cmd' : 'bash';
-            const c = osPlatform === 'win32' ? '/c' : '-c';
+            const argC = osPlatform === 'win32' ? '/c' : '-c';
             const spawnSyncOptions: SpawnSyncOptions = {
               env: {
                 ...process.env,
@@ -84,7 +91,7 @@ export class VueCliBundling implements BundlingOptions {
             exec(
               cmd,
               [
-                c,
+                argC,
                 'npm install',
               ],
               spawnSyncOptions,
@@ -92,7 +99,7 @@ export class VueCliBundling implements BundlingOptions {
             exec(
               cmd,
               [
-                c,
+                argC,
                 createLocalCommand(outputDir),
               ],
               spawnSyncOptions,
@@ -110,12 +117,9 @@ export class VueCliBundling implements BundlingOptions {
     const npx: string = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
     const vueCliServeBuildCommand: string = [
       npx,
-      'npm',
-      'install',
-      ';',
+      'npm install;',
       npx,
-      'vue-cli-service',
-      'build',
+      'vue-cli-service build',
       bundlingArguments,
       '--no-install',
       '--no-clean',
@@ -127,8 +131,7 @@ export class VueCliBundling implements BundlingOptions {
     const npx: string = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
     const vueCliServeBuildCommand: string = [
       npx,
-      'vue-cli-service',
-      'build',
+      'vue-cli-service build',
       bundlingArguments,
       '--no-install',
       '--no-clean',
