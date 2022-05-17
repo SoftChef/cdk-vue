@@ -116,8 +116,7 @@ export class VueCliBundling implements BundlingOptions {
   private createDockerBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string {
     const npx: string = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
     const vueCliServeBuildCommand: string = [
-      npx,
-      'npm install;',
+      'npm install --no-cache;',
       npx,
       'vue-cli-service build',
       bundlingArguments,
