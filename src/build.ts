@@ -17,12 +17,9 @@ import {
   VueCliBuildProps,
 } from './types';
 import {
-  getNpxVersion,
   getVueCliVersion,
   exec,
 } from './util';
-
-const NPX_MAJOR_VERSION = '6';
 
 export class VueCliBundling implements BundlingOptions {
 
@@ -51,10 +48,14 @@ export class VueCliBundling implements BundlingOptions {
     if (props.runsLocally === false || props.forceDockerBundling === true) {
       VueCliBundling.runsLocally = false;
     } else {
-      VueCliBundling.runsLocally = (getNpxVersion()?.startsWith(NPX_MAJOR_VERSION) && getVueCliVersion()?.startsWith('@vue/cli')) ?? false;
+      VueCliBundling.runsLocally = getVueCliVersion()?.startsWith('@vue/cli') ?? false;
     }
     const bundlingArguments = props.bundlingArguments ?? '';
-    const bundlingCommand = this.createDockerBundlingCommand(AssetStaging.BUNDLING_OUTPUT_DIR, bundlingArguments);
+    const bundlingCommand: string = [
+      'npm install --no-cache;',
+      'rm -Rf false;',
+      `npm run build -- ${bundlingArguments} --no-clean --dest ${AssetStaging.BUNDLING_OUTPUT_DIR};`,
+    ].join(' ');
     this.image = DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
     if (VueCliBundling.runsLocally) {
       this.image = DockerImage.fromRegistry('williamyeh/dummy');
@@ -63,9 +64,6 @@ export class VueCliBundling implements BundlingOptions {
     this.environment = props.environment;
     if (!props.forceDockerBundling) {
       const osPlatform = os.platform();
-      const createLocalCommand = (outputDir: string) => {
-        return this.createLocalBundlingCommand(outputDir, bundlingArguments, osPlatform);
-      };
       this.local = {
         tryBundle(outputDir: string) {
           if (VueCliBundling.runsLocally === false) {
@@ -100,7 +98,7 @@ export class VueCliBundling implements BundlingOptions {
               cmd,
               [
                 argC,
-                createLocalCommand(outputDir),
+                `npm run build -- ${bundlingArguments} --no-clean --dest ${outputDir};`,
               ],
               spawnSyncOptions,
             );
@@ -111,31 +109,5 @@ export class VueCliBundling implements BundlingOptions {
         },
       };
     }
-  }
-
-  private createDockerBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string {
-    const npx: string = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
-    const vueCliServeBuildCommand: string = [
-      'npm install --no-cache;',
-      npx,
-      'vue-cli-service build',
-      bundlingArguments,
-      '--no-install',
-      '--no-clean',
-      `--dest ${outputDir}`,
-    ].join(' ');
-    return vueCliServeBuildCommand;
-  }
-  private createLocalBundlingCommand(outputDir: string, bundlingArguments: string, osPlatform: NodeJS.Platform = 'linux'): string {
-    const npx: string = osPlatform === 'win32' ? 'npx.cmd' : 'npx';
-    const vueCliServeBuildCommand: string = [
-      npx,
-      'vue-cli-service build',
-      bundlingArguments,
-      '--no-install',
-      '--no-clean',
-      `--dest ${outputDir}`,
-    ].join(' ');
-    return vueCliServeBuildCommand;
   }
 }
