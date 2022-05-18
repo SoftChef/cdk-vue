@@ -52,8 +52,8 @@ export class VueCliBundling implements BundlingOptions {
     }
     const bundlingArguments = props.bundlingArguments ?? '';
     const bundlingCommand: string = [
-      'npm install --no-cache;',
-      'rm -Rf false;',
+      'npm install --cache=./.cache;',
+      'rm -Rf ./.cache;',
       `npm run build -- ${bundlingArguments} --no-clean --dest ${AssetStaging.BUNDLING_OUTPUT_DIR};`,
     ].join(' ');
     this.image = DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
