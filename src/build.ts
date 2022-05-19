@@ -51,10 +51,13 @@ export class VueCliBundling implements BundlingOptions {
     }
     const bundlingArguments = props.bundlingArguments ?? '';
     const bundlingCommand: string = [
-      'npm install --cache=./.cache;',
-      'rm -Rf ./.cache;',
-      `npm run build -- ${bundlingArguments} --no-clean --dest ${AssetStaging.BUNDLING_OUTPUT_DIR};`,
-    ].join(' ');
+      'echo "Running on Docker container\n"',
+      'echo "Node version: $(node -v)\n"',
+      'echo "NPM version: $(npm -v)\n"',
+      'npm install --cache=./.cache',
+      'rm -Rf ./.cache',
+      `npm run build -- ${bundlingArguments} --no-clean --dest ${AssetStaging.BUNDLING_OUTPUT_DIR}`,
+    ].join(';');
     this.image = DockerImage.fromRegistry(`${props.nodeImage ?? 'public.ecr.aws/bitnami/node'}`);
     if (VueCliBundling.runsLocally) {
       this.image = DockerImage.fromRegistry('williamyeh/dummy');
@@ -85,22 +88,16 @@ export class VueCliBundling implements BundlingOptions {
               cwd: path.resolve(props.source),
               windowsVerbatimArguments: osPlatform === 'win32',
             };
-            exec(
-              cmd,
-              [
-                argC,
-                'npm install',
-              ],
-              spawnSyncOptions,
-            );
-            exec(
-              cmd,
-              [
-                argC,
-                `npm run build -- ${bundlingArguments} --no-clean --dest ${outputDir};`,
-              ],
-              spawnSyncOptions,
-            );
+            const commands = [
+              'echo "Running on local\n"',
+              'echo "Node version: $(node -v)\n"',
+              'echo "NPM version: $(npm -v)\n"',
+              'npm install',
+              `npm run build -- ${bundlingArguments} --no-clean --dest ${outputDir};`,
+            ];
+            for (const command of commands) {
+              exec(cmd, [argC, command], spawnSyncOptions);
+            }
           } catch (error) {
             return false;
           }
