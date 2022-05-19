@@ -52,8 +52,9 @@ export class VueCliBundling implements BundlingOptions {
     }
     const bundlingArguments = props.bundlingArguments ?? '';
     const bundlingCommand: string = [
-      'node -v',
-      'npm -v',
+      'echo "Running on Docker container\n"',
+      'echo "Node version: $(node -v)\n"',
+      'echo "NPM version: $(npm -v)\n"',
       'npm install --cache=./.cache',
       'rm -Rf ./.cache',
       `npm run build -- ${bundlingArguments} --no-clean --dest ${AssetStaging.BUNDLING_OUTPUT_DIR}`,
@@ -89,8 +90,9 @@ export class VueCliBundling implements BundlingOptions {
               windowsVerbatimArguments: osPlatform === 'win32',
             };
             const commands = [
-              'node -v',
-              'npm -v',
+              'echo "Running on local\n"',
+              'echo "Node version: $(node -v)\n"',
+              'echo "NPM version: $(npm -v)\n"',
               'npm install',
               `npm run build -- ${bundlingArguments} --no-clean --dest ${outputDir};`,
             ];
